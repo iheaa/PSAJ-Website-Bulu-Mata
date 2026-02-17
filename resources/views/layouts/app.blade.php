@@ -67,6 +67,7 @@
             background-color: #D4AF37;
         }
     </style>
+    @stack('styles')
 </head>
 
 <body class="font-sans antialiased text-gray-600 bg-white">

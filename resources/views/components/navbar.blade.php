@@ -71,11 +71,11 @@
                         <div class="py-1 relative z-10">
                             <a href="#"
                                 class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-[#F3E5DC]/30 hover:text-narita-gold transition-colors font-medium">
-                                Your Profile
+                                Profile
                             </a>
-                            <a href="#"
+                            <a href="{{ route('orders.index') }}"
                                 class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-[#F3E5DC]/30 hover:text-narita-gold transition-colors font-medium">
-                                Settings
+                                Lihat Pesanan
                             </a>
                         </div>
 
@@ -164,10 +164,10 @@
                             class="block w-full text-center px-6 py-4 border border-gray-200 text-gray-500 rounded-xl font-bold uppercase tracking-widest shadow-sm hover:bg-gray-50 transition transform active:scale-95">
                             Logout
                         </button>
-                    </form>
+                    </form>z
                     @else
                     <a href="{{ route('signin') }}"
-                        class="block w-full text-center px-6 py-4 bg-narita-gold text-white rounded-xl font-bold uppercase tracking-widest shadow-lg hover:shadow-xl hover:bg-[#c29d2b] transition transform active:scale-95">
+                        class="block w-full text-center px-6 py-4 bg-narita-gold rounded-xl font-bold uppercase tracking-widest shadow-lg hover:shadow-xl hover:bg-[#c29d2b] transition transform active:scale-95">
                         Sign In
                     </a>
                     @endauth

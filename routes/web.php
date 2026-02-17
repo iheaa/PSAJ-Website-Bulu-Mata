@@ -46,3 +46,9 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/dashboard', [App\Http\Controllers\CatalogController::class , 'dashboard'])->name('dashboard');
     Route::resource('catalogs', App\Http\Controllers\CatalogController::class);
 });
+
+// User Orders Routes
+Route::middleware('auth')->group(function () {
+    Route::get('/orders', [App\Http\Controllers\OrderController::class , 'index'])->name('orders.index');
+    Route::get('/orders/{id}', [App\Http\Controllers\OrderController::class , 'show'])->name('orders.show');
+});
