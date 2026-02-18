@@ -45,6 +45,12 @@ Route::delete('/cart/remove/{id}', [App\Http\Controllers\CheckoutController::cla
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\CatalogController::class , 'dashboard'])->name('dashboard');
     Route::resource('catalogs', App\Http\Controllers\CatalogController::class);
+
+    // Order Management
+    Route::get('/orders/export', [App\Http\Controllers\AdminOrderController::class , 'export'])->name('orders.export');
+    Route::get('/orders', [App\Http\Controllers\AdminOrderController::class , 'index'])->name('orders.index');
+    Route::get('/orders/{id}', [App\Http\Controllers\AdminOrderController::class , 'show'])->name('orders.show');
+    Route::patch('/orders/{id}', [App\Http\Controllers\AdminOrderController::class , 'updateStatus'])->name('orders.updateStatus');
 });
 
 // User Orders Routes

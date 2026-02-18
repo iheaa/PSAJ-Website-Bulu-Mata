@@ -9,7 +9,36 @@ class CatalogController extends Controller
     public function dashboard()
     {
         $totalCatalogs = \App\Models\Catalog::count();
-        return view('admin.dashboard', compact('totalCatalogs'));
+
+        $paidOrders = \App\Models\Order::where(function ($q) {
+            $q->where('status', 'paid')
+                ->orWhere('status', 'processing')
+                ->orWhere('status', 'shipped')
+                ->orWhere('status', 'completed');
+        });
+
+        // Total Items Sold (sum of quantities in order_items for paid orders)
+        // We need to join with order_items
+        $totalItemsSold = \App\Models\OrderItem::whereHas('order', function ($q) {
+            $q->where('status', 'paid')
+                ->orWhere('status', 'processing')
+                ->orWhere('status', 'shipped')
+                ->orWhere('status', 'completed');
+        })->sum('quantity');
+
+        // Monthly Revenue (Current Month)
+        // We need to clone the query builder or create a new one because the previous one might be modified
+        $monthlyRevenue = \App\Models\Order::where(function ($q) {
+            $q->where('status', 'paid')
+                ->orWhere('status', 'processing')
+                ->orWhere('status', 'shipped')
+                ->orWhere('status', 'completed');
+        })
+            ->whereMonth('created_at', now()->month)
+            ->whereYear('created_at', now()->year)
+            ->sum('total_price');
+
+        return view('admin.dashboard', compact('totalCatalogs', 'totalItemsSold', 'monthlyRevenue'));
     }
 
     /**
