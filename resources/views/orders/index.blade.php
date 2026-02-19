@@ -4,6 +4,9 @@
 <div class="bg-gray-50 min-h-screen pb-20 pt-10 font-sans text-gray-800">
     <div class="container mx-auto px-4 max-w-5xl">
         <h1 class="text-3xl font-bold text-gray-900 mb-8 tracking-tight">Riwayat Pesanan</h1>
+        <br>
+        <br>
+
 
         @if($orders->count() > 0)
         <div class="space-y-6">
@@ -79,8 +82,9 @@
             </div>
             <h2 class="text-xl font-bold text-gray-900 mb-2">Belum Ada Pesanan</h2>
             <p class="text-gray-500 mb-8 max-w-md">Anda belum melakukan transaksi apapun. Yuk mulai belanja!</p>
+            <br>
             <a href="{{ route('catalog.index') }}"
-                class="bg-orange-600 text-white font-bold py-3 px-8 rounded-full hover:bg-orange-700 transition-all shadow-lg hover:shadow-orange-200">
+                class="bg-orange-600 font-bold py-3 px-8 rounded-full hover:bg-orange-700 transition-all shadow-lg hover:shadow-orange-200">
                 Mulai Belanja
             </a>
         </div>
