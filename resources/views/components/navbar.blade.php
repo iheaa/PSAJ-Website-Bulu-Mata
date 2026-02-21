@@ -24,8 +24,8 @@
                     class="px-4 py-2 text-xs lg:text-sm {{ request()->is('gallery') ? 'font-semibold text-narita-gold bg-white shadow-sm' : 'font-medium text-gray-500 hover:text-narita-gold hover:bg-white/50' }} tracking-wider uppercase rounded-full transition-all duration-300">Gallery</a>
                 <a href="{{ route('catalog.index') }}"
                     class="px-4 py-2 text-xs lg:text-sm {{ request()->routeIs('catalog.index') ? 'font-semibold text-narita-gold bg-white shadow-sm' : 'font-medium text-gray-500 hover:text-narita-gold hover:bg-white/50' }} tracking-wider uppercase rounded-full transition-all duration-300">Katalog</a>
-                <a href="#"
-                    class="px-4 py-2 text-xs lg:text-sm font-medium tracking-wider uppercase text-gray-500 hover:text-narita-gold hover:bg-white/50 rounded-full transition-all duration-300">Tentang</a>
+                <a href="{{ url('/tentang') }}"
+                    class="px-4 py-2 text-xs lg:text-sm {{ request()->is('tentang') ? 'font-semibold text-narita-gold bg-white shadow-sm' : 'font-medium text-gray-500 hover:text-narita-gold hover:bg-white/50' }} tracking-wider uppercase rounded-full transition-all duration-300">Tentang</a>
                 <a href="{{ url('/contact') }}"
                     class="px-4 py-2 text-xs lg:text-sm {{ request()->is('contact') ? 'font-semibold text-narita-gold bg-white shadow-sm' : 'font-medium text-gray-500 hover:text-narita-gold hover:bg-white/50' }} tracking-wider uppercase rounded-full transition-all duration-300">Kontak</a>
 
@@ -144,8 +144,8 @@
                     class="block text-center px-4 py-3 rounded-xl text-lg font-sans font-medium {{ request()->is('gallery') ? 'text-narita-gold bg-[#F3E5DC]/50 border border-[#F3E5DC]' : 'text-gray-600 hover:text-narita-gold hover:bg-[#F3E5DC]/30' }} transition-colors">Gallery</a>
                 <a href="{{ route('catalog.index') }}"
                     class="block text-center px-4 py-3 rounded-xl text-lg font-sans font-medium {{ request()->routeIs('catalog.index') ? 'text-narita-gold bg-[#F3E5DC]/50 border border-[#F3E5DC]' : 'text-gray-600 hover:text-narita-gold hover:bg-[#F3E5DC]/30' }} transition-colors tracking-wider uppercase">Katalog</a>
-                <a href="#"
-                    class="block text-center px-4 py-3 rounded-xl text-lg font-sans font-medium text-gray-600 hover:text-narita-gold hover:bg-[#F3E5DC]/30 transition-colors">Tentang</a>
+                <a href="{{ url('/tentang') }}"
+                    class="block text-center px-4 py-3 rounded-xl text-lg font-sans font-medium {{ request()->is('tentang') ? 'text-narita-gold bg-[#F3E5DC]/50 border border-[#F3E5DC]' : 'text-gray-600 hover:text-narita-gold hover:bg-[#F3E5DC]/30' }} transition-colors">Tentang</a>
                 <a href="{{ url('/contact') }}"
                     class="block text-center px-4 py-3 rounded-xl text-lg font-sans font-medium {{ request()->is('contact') ? 'text-narita-gold bg-[#F3E5DC]/50 border border-[#F3E5DC]' : 'text-gray-600 hover:text-narita-gold hover:bg-[#F3E5DC]/30' }} transition-colors">Kontak</a>
 

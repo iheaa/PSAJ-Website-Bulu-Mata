@@ -14,6 +14,10 @@ Route::get('/gallery', function () {
     return view('gallery');
 });
 
+Route::get('/tentang', function () {
+    return view('tentang');
+});
+
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 
