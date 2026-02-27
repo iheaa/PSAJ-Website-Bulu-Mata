@@ -106,77 +106,92 @@
 </main>
 
     <!-- #2 Section: Pilihan Style Eyelash -->
-    <main class="max-w-screen-lg mx-auto px-6 py-20 bg-white">
+ <main class="max-w-screen-lg mx-auto px-6 py-20 bg-white">
         
-        <div class="flex flex-col md:flex-row-reverse items-center lg:items-start gap-12 lg:gap-16">
+    <div class="flex flex-col md:flex-row items-center lg:items-start gap-12 lg:gap-16">
+
+        <!-- Image (Mobile: Atas | Desktop: Kanan) -->
+        <div class="w-full md:w-1/2 relative lg:pl-8">
             
-            <!-- Column 1 (Right on Desktop): Image Composition -->
-            <div class="w-full md:w-1/2 relative lg:pl-8 mt-12 md:mt-0">
-                <!-- Main Image (Deep Background) -->
-                <div class="relative w-[85%] md:w-[80%] h-[350px] sm:h-[450px] md:h-[500px] rounded-lg shadow-md overflow-hidden z-10">
-                    <img src="{{ asset('img/bawah.png') }}" alt="Narita Lash Models" class="w-full h-full object-cover">
-                </div>
-
-            <!-- Column 2 (Left on Desktop): Typography / Content -->
-            <div class="w-full md:w-1/2 md:pr-4 lg:pr-8 text-left">
-                <!-- Main Heading -->
-                <h2 class="text-3xl md:text-5xl font-bold text-gray-800 font-sans tracking-tight mb-8 md:mb-10 leading-tight">
-                    Pilihan Style<br>Eyelash di Narita<br>Lashes
-                </h2>
-
-                <!-- Style List -->
-                <div class="space-y-6">
-                    <!-- Item 1 -->
-                    <div>
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 font-sans mb-1">Classic Lashes</h3>
-                        <p class="text-gray-600 leading-relaxed text-base font-sans">
-                            Tampilan rapi dan natural dengan hasil ringan, cocok untuk sehari-hari.
-                        </p>
-                    </div>
-
-                    <!-- Item 2 -->
-                    <div>
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 font-sans mb-1">Volume Lashes</h3>
-                        <p class="text-gray-600 leading-relaxed text-base font-sans">
-                            Bulu mata terlihat lebih tebal dan penuh, memberi kesan lebih bold.
-                        </p>
-                    </div>
-
-                    <!-- Item 3 -->
-                    <div>
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 font-sans mb-1">Natural Lashes</h3>
-                        <p class="text-gray-600 leading-relaxed text-base font-sans">
-                            Tampilan sederhana dan alami, seperti bulu mata asli yang lebih lentik.
-                        </p>
-                    </div>
-
-                    <!-- Item 4 -->
-                    <div>
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 font-sans mb-1">Soft Wispy Lashes</h3>
-                        <p class="text-gray-600 leading-relaxed text-base font-sans">
-                            Bulu mata bervariasi panjangnya, memberi efek lembut dan manis.
-                        </p>
-                    </div>
-
-                    <!-- Item 5 -->
-                    <div>
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 font-sans mb-1">Doll Eye Lashes</h3>
-                        <p class="text-gray-600 leading-relaxed text-base font-sans">
-                            Fokus di bagian tengah mata, membuat mata terlihat lebih besar dan bulat.
-                        </p>
-                    </div>
-
-                    <!-- Item 6 (Dan Lain-Lain) -->
-                    <div class="pt-2">
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 font-sans">Dan Lain-Lain</h3>
-                    </div>
-                </div>
+            <div class="relative w-[85%] md:w-[80%] ml-auto
+                        h-[350px] sm:h-[450px] md:h-[500px]
+                        rounded-lg shadow-md overflow-hidden">
+                
+                <img src="{{ asset('img/bawah.png') }}" 
+                     alt="Narita Lash Models"
+                     class="w-full h-full object-cover">
             </div>
-            
         </div>
-    </main>
 
+        <!-- Text (Mobile: Bawah | Desktop: Kiri) -->
+        <div class="w-full md:w-1/2 md:pr-8 text-left">
 
+            <h2 class="text-3xl md:text-5xl font-bold text-gray-800 
+                       tracking-tight mb-8 md:mb-10 leading-tight">
+                Pilihan Style<br>Eyelash di Narita<br>Lashes
+            </h2>
+
+            <div class="space-y-6">
+
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-1">
+                        Classic Lashes
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Tampilan rapi dan natural dengan hasil ringan, cocok untuk sehari-hari.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-1">
+                        Volume Lashes
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Bulu mata terlihat lebih tebal dan penuh, memberi kesan lebih bold.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-1">
+                        Natural Lashes
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Tampilan sederhana dan alami, seperti bulu mata asli yang lebih lentik.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-1">
+                        Soft Wispy Lashes
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Bulu mata bervariasi panjangnya, memberi efek lembut dan manis.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-1">
+                        Doll Eye Lashes
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Fokus di bagian tengah mata, membuat mata terlihat lebih besar dan bulat.
+                    </p>
+                </div>
+
+                <div class="pt-2">
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-800">
+                        Dan Lain-Lain
+                    </h3>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</main>
+    </div>
+</main>
     <!-- Footer -->
     <footer class="bg-white pt-16 pb-12 border-t border-gray-100/50 mt-12 lg:mt-24">
         <div class="max-w-7xl mx-auto px-6">
