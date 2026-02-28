@@ -98,6 +98,17 @@
                 </a>
                 @endauth
 
+                <!-- Mobile Cart Button -->
+                <a href="{{ route('cart.index') }}"
+                    class="md:hidden ml-2 inline-flex items-center justify-center w-9 h-9 rounded-full hover:bg-gray-100 transition-colors relative">
+                    <img src="{{ asset('img/image 35.png') }}" alt="Cart"
+                        class="w-5 h-5 object-contain opacity-70">
+                    <span id="cart-count-mobile"
+                        class="{{ (session('cart') && count(session('cart')) > 0) ? '' : 'hidden' }} absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
+                        {{ session('cart') ? array_sum(array_column(session('cart'), 'quantity')) : 0 }}
+                    </span>
+                </a>
+
                 <!-- Mobile Menu Button -->
                 <button id="mobile-menu-btn" type="button"
                     class="md:hidden ml-4 inline-flex items-center justify-center p-2 rounded-full text-gray-400 hover:text-narita-gold hover:bg-gray-100 transition-colors focus:outline-none relative"
@@ -253,15 +264,18 @@
 
     // Global Cart Sync Listener
     window.addEventListener('cart-updated', (e) => {
-        const badge = document.getElementById('cart-count');
-        if (badge) {
-            const count = e.detail.count;
+        const ids = ['cart-count', 'cart-count-mobile'];
+        const count = e.detail.count;
+
+        ids.forEach((id) => {
+            const badge = document.getElementById(id);
+            if (!badge) return;
             badge.innerText = count;
             if (count > 0) {
                 badge.classList.remove('hidden');
             } else {
                 badge.classList.add('hidden');
             }
-        }
+        });
     });
 </script>

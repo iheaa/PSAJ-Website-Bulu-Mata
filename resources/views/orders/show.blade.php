@@ -62,32 +62,67 @@
             @endphp
             <div class="relative">
                 {{-- Garis penghubung: abu-abu penuh, hijau sampai step saat ini --}}
-                <div class="absolute top-5 left-0 right-0 h-0.5 bg-gray-200 rounded pointer-events-none" aria-hidden="true" style="margin-left: 10%; margin-right: 10%; width: 80%;"></div>
+                <div class="absolute top-5 left-0 right-0 h-0.5 bg-gray-200 rounded pointer-events-none"
+                    aria-hidden="true" style="margin-left: 10%; margin-right: 10%; width: 80%;"></div>
                 @php $linePercent = $currentIdx >= 0 ? (($currentIdx + 1) / count($steps)) * 80 : 0; @endphp
-                <div class="absolute top-5 left-0 h-0.5 bg-green-500 rounded pointer-events-none transition-all duration-300" aria-hidden="true" style="margin-left: 10%; width: {{ $linePercent }}%;"></div>
+                <div class="absolute top-5 left-0 h-0.5 bg-green-500 rounded pointer-events-none transition-all duration-300"
+                    aria-hidden="true" style="margin-left: 10%; width: {{ $linePercent }}%;"></div>
                 <div class="relative flex justify-between">
                     @foreach($steps as $key => $step)
                         @php $isCompleted = $key <= $currentIdx; @endphp
                         <div class="flex flex-col items-center flex-1">
-                            <div class="h-10 w-10 rounded-full flex items-center justify-center flex-shrink-0 {{ $isCompleted ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-400' }} ring-4 ring-white shadow-sm z-10">
+                            <div
+                                class="relative h-10 w-10 rounded-full flex items-center justify-center flex-shrink-0 {{ $isCompleted ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-400' }} ring-4 ring-white shadow-sm z-10">
                                 @if($key === 0)
                                     {{-- Ikon: Dokumen / Pesanan Dibuat --}}
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                    </svg>
                                 @elseif($key === 1)
                                     {{-- Ikon: Pembayaran --}}
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
                                 @elseif($key === 2)
                                     {{-- Ikon: Diproses / Kotak --}}
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                    </svg>
                                 @elseif($key === 3)
                                     {{-- Ikon: Truk / Dikirim --}}
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 17a2 2 0 11-4 0 2 2 0 014 0zM16 17a2 2 0 11-4 0 2 2 0 014 0zM5 7h14l2 4H3L5 7z" /></svg>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M8 17a2 2 0 11-4 0 2 2 0 014 0zM16 17a2 2 0 11-4 0 2 2 0 014 0zM5 7h14l2 4H3L5 7z" />
+                                    </svg>
                                 @else
                                     {{-- Ikon: Selesai / Bintang --}}
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                @endif
+                                @if($isCompleted)
+                                    <span
+                                        class="absolute -bottom-1 -right-1 h-4 w-4 rounded-full bg-blue-500 flex items-center justify-center ring-2 ring-white">
+                                        <svg class="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" stroke-width="3">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </span>
                                 @endif
                             </div>
-                            <div class="mt-2 text-xs font-medium text-center {{ $isCompleted ? 'text-green-600' : 'text-gray-500' }}">{{ $labels[$key] }}</div>
+                            <div
+                                class="mt-2 text-xs font-medium text-center {{ $isCompleted ? 'text-green-600' : 'text-gray-500' }}">
+                                {{ $labels[$key] }}</div>
                         </div>
                     @endforeach
                 </div>
@@ -177,9 +212,9 @@
                         </div>
                     </div>
 
-                    @if($order->status == 'pending')
-                    <button onclick="window.snap.pay('{{ $order->snap_token }}')"
-                        class="w-full mt-6 bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded-xl transition-all shadow-md">
+                    @if(in_array(strtolower($order->status), ['pending', 'unpaid']))
+                    <button id="btn-pay-now"
+                        class="w-full mt-6 bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded-xl transition-all shadow-md disabled:opacity-70 disabled:cursor-not-allowed">
                         Bayar Sekarang
                     </button>
                     @endif
@@ -190,9 +225,63 @@
 </div>
 </div>
 
-@if($order->status == 'pending')
+@if(in_array(strtolower($order->status), ['pending', 'unpaid']))
 <script src="https://app.sandbox.midtrans.com/snap/snap.js"
     data-client-key="{{ config('services.midtrans.client_key') }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const payBtn = document.getElementById('btn-pay-now');
+        if (!payBtn || typeof window.snap === 'undefined') return;
+
+        function setLoading(state) {
+            if (!payBtn) return;
+            payBtn.disabled = state;
+            payBtn.textContent = state ? 'Memuat pembayaran...' : 'Bayar Sekarang';
+        }
+
+        payBtn.addEventListener('click', function () {
+            setLoading(true);
+            fetch("{{ route('orders.pay', $order->id) }}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                },
+                body: JSON.stringify({})
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.success || !data.snap_token) {
+                        setLoading(false);
+                        alert(data.message || 'Gagal memulai pembayaran. Silakan coba lagi.');
+                        return;
+                    }
+
+                    window.snap.pay(data.snap_token, {
+                        onSuccess: function () {
+                            window.location.href =
+                                "{{ route('payment.finish') }}" + "?order_id={{ $order->id }}";
+                        },
+                        onPending: function () {
+                            setLoading(false);
+                        },
+                        onError: function () {
+                            setLoading(false);
+                            alert('Terjadi kesalahan saat memproses pembayaran.');
+                        },
+                        onClose: function () {
+                            setLoading(false);
+                        }
+                    });
+                })
+                .catch(() => {
+                    setLoading(false);
+                    alert('Tidak dapat menghubungi server. Silakan periksa koneksi Anda dan coba lagi.');
+                });
+        });
+    });
+</script>
 @endif
 
 @endsection

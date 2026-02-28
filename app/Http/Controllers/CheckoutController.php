@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Midtrans\Config;
 use Midtrans\Snap;
+use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
@@ -153,8 +155,8 @@ class CheckoutController extends Controller
             }
 
             // 2. Create Order
-            $order = \App\Models\Order::create([
-                'user_id' => \Illuminate\Support\Facades\Auth::id(),
+            $order = Order::create([
+                'user_id' => Auth::id(),
                 'customer_name' => $request->customer_name,
                 'customer_phone' => $request->customer_phone,
                 'customer_address' => $request->customer_address,
@@ -236,8 +238,8 @@ class CheckoutController extends Controller
             }
 
             // 2. Create Order (Status: pending)
-            $order = \App\Models\Order::create([
-                'user_id' => \Illuminate\Support\Facades\Auth::id(),
+            $order = Order::create([
+                'user_id' => Auth::id(),
                 'customer_name' => $request->customer_name,
                 'customer_phone' => $request->customer_phone,
                 'customer_address' => $request->customer_address,
@@ -291,7 +293,7 @@ class CheckoutController extends Controller
                 'item_details' => $items,
             ];
 
-            $snapToken = \Midtrans\Snap::getSnapToken($params);
+            $snapToken = Snap::getSnapToken($params);
 
             \Illuminate\Support\Facades\DB::commit();
 
@@ -313,7 +315,7 @@ class CheckoutController extends Controller
         // Called after success callback from Frontend
         $orderId = $request->query('order_id');
 
-        $order = \App\Models\Order::find($orderId);
+        $order = Order::find($orderId);
 
         if (!$order) {
             return redirect()->route('catalog.index')->with('error', 'Order not found.');
@@ -339,5 +341,64 @@ class CheckoutController extends Controller
         }
 
         return redirect()->route('checkout.success', $order->id)->with('success', 'Pembayaran berhasil!');
+    }
+
+    /**
+     * Generate Midtrans Snap token for an existing order (retry payment from Riwayat Pesanan).
+     */
+    public function payExisting(Request $request, $id)
+    {
+        $order = Order::with('items')
+            ->where('user_id', Auth::id())
+            ->whereIn('status', ['pending', 'unpaid'])
+            ->findOrFail($id);
+
+        // Prepare Midtrans configuration
+        Config::$serverKey = config('services.midtrans.server_key');
+        Config::$isProduction = config('services.midtrans.is_production', false);
+        Config::$isSanitized = config('services.midtrans.is_sanitized', true);
+        Config::$is3ds = config('services.midtrans.is_3ds', true);
+
+        $items = [];
+        foreach ($order->items as $item) {
+            $items[] = [
+                'id' => $item->catalog_id,
+                'price' => (int) $item->price,
+                'quantity' => (int) $item->quantity,
+                'name' => substr($item->product_name, 0, 50),
+            ];
+        }
+
+        $params = [
+            'transaction_details' => [
+                'order_id' => 'NARITA-RETRY-' . $order->id . '-' . time(),
+                'gross_amount' => (int) $order->total_price,
+            ],
+            'customer_details' => [
+                'first_name' => $order->customer_name,
+                'phone' => $order->customer_phone,
+                'billing_address' => [
+                    'address' => $order->customer_address,
+                ],
+                'shipping_address' => [
+                    'address' => $order->customer_address,
+                ],
+            ],
+            'item_details' => $items,
+        ];
+
+        try {
+            $snapToken = Snap::getSnapToken($params);
+
+            return response()->json([
+                'success' => true,
+                'snap_token' => $snapToken,
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage(),
+            ], 500);
+        }
     }
 }

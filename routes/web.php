@@ -44,6 +44,7 @@ Route::get('/checkout-details', [App\Http\Controllers\CheckoutController::class 
 Route::post('/checkout/process', [App\Http\Controllers\CheckoutController::class , 'processPayment'])->name('checkout.process')->middleware('auth');
 Route::get('/payment/finish', [App\Http\Controllers\CheckoutController::class , 'paymentSuccess'])->name('payment.finish')->middleware('auth');
 Route::get('/checkout/success/{id}', [App\Http\Controllers\CheckoutController::class , 'success'])->name('checkout.success')->middleware('auth');
+Route::post('/orders/{id}/pay', [App\Http\Controllers\CheckoutController::class , 'payExisting'])->name('orders.pay')->middleware('auth');
 Route::patch('/cart/update/{id}', [App\Http\Controllers\CheckoutController::class , 'updateQuantity'])->name('cart.update');
 Route::delete('/cart/remove/{id}', [App\Http\Controllers\CheckoutController::class , 'removeItem'])->name('cart.remove');
 
