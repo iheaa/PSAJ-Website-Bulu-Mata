@@ -102,7 +102,7 @@
                             </div>
 
                             <button type="submit" id="pay-button"
-                                class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 rounded-xl shadow-md transition-all transform hover:-translate-y-1 block text-center flex items-center justify-center gap-2">
+                                class="w-full bg-orange-600 hover:bg-orange-700 text-black font-bold py-4 rounded-xl shadow-md transition-all transform hover:-translate-y-1 block text-center flex items-center justify-center gap-2">
                                 <span id="btn-text">Konfirmasi Pesanan</span>
                                 <svg id="btn-spinner" class="animate-spin h-5 w-5 text-white hidden"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
