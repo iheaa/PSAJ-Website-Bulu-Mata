@@ -69,9 +69,9 @@
                         </div>
 
                         <div class="py-1 relative z-10">
-                            <a href="#"
+                            <a href="{{ route('profile.edit') }}"
                                 class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-[#F3E5DC]/30 hover:text-narita-gold transition-colors font-medium">
-                                Profile
+                                Profil Saya
                             </a>
                             <a href="{{ route('orders.index') }}"
                                 class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-[#F3E5DC]/30 hover:text-narita-gold transition-colors font-medium">
@@ -158,13 +158,21 @@
                         </div>
                         <span class="text-lg font-bold text-gray-800">{{ Auth::user()->name }}</span>
                     </div>
+                    <a href="{{ route('profile.edit') }}"
+                        class="block w-full text-center px-6 py-3 rounded-xl text-gray-600 hover:text-narita-gold hover:bg-[#F3E5DC]/30 font-medium mb-2 transition-colors">
+                        Profil Saya
+                    </a>
+                    <a href="{{ route('orders.index') }}"
+                        class="block w-full text-center px-6 py-3 rounded-xl text-gray-600 hover:text-narita-gold hover:bg-[#F3E5DC]/30 font-medium mb-2 transition-colors">
+                        Lihat Pesanan
+                    </a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit"
                             class="block w-full text-center px-6 py-4 border border-gray-200 text-gray-500 rounded-xl font-bold uppercase tracking-widest shadow-sm hover:bg-gray-50 transition transform active:scale-95">
                             Logout
                         </button>
-                    </form>z
+                    </form>
                     @else
                     <a href="{{ route('signin') }}"
                         class="block w-full text-center px-6 py-4 bg-narita-gold rounded-xl font-bold uppercase tracking-widest shadow-lg hover:shadow-xl hover:bg-[#c29d2b] transition transform active:scale-95">

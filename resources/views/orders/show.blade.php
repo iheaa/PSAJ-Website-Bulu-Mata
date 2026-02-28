@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="bg-gray-50 min-h-screen pb-20 pt-10 font-sans text-gray-800">
-    <div class="container mx-auto px-4 max-w-4xl">
+    <div class="container mx-auto px-4 max-w-4xl lg:max-w-6xl">
 
         <!-- Breadcrumb / Back -->
         <div class="mb-6">
@@ -15,9 +15,8 @@
             </a>
         </div>
 
-        <!-- Header: Order ID & Status -->
-        <div
-            class="bg-white rounded-t-xl shadow-sm border border-gray-100 p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden mb-6">
+            <div class="p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100">
             <div>
                 <h1 class="text-2xl font-bold text-gray-900">Order #{{ $order->id }}</h1>
                 <p class="text-sm text-gray-500 mt-1">Dibuat pada {{ $order->created_at->format('d F Y, H:i') }}</p>
@@ -51,48 +50,53 @@
                     {{ $label }}
                 </span>
             </div>
-        </div>
-
-        <!-- Progress Tracker -->
-        <div class="bg-white border-x border-b border-gray-100 p-6 md:p-8 mb-6">
+            </div>
+            <div class="p-6 md:p-8">
+            @php
+                $steps = ['pending', 'paid', 'processing', 'shipped', 'completed'];
+                $labels = ['Pesanan Dibuat', 'Dibayar', 'Diproses', 'Dikirim', 'Selesai'];
+                $currentStatus = strtolower($order->status);
+                $statusForProgress = ($currentStatus === 'unpaid') ? 'pending' : $currentStatus;
+                $currentIdx = array_search($statusForProgress, $steps);
+                if ($currentIdx === false) $currentIdx = -1;
+            @endphp
             <div class="relative">
-                <div class="absolute inset-0 flex items-center" aria-hidden="true">
-                    <div class="w-full border-t border-gray-200"></div>
-                </div>
+                {{-- Garis penghubung: abu-abu penuh, hijau sampai step saat ini --}}
+                <div class="absolute top-5 left-0 right-0 h-0.5 bg-gray-200 rounded pointer-events-none" aria-hidden="true" style="margin-left: 10%; margin-right: 10%; width: 80%;"></div>
+                @php $linePercent = $currentIdx >= 0 ? (($currentIdx + 1) / count($steps)) * 80 : 0; @endphp
+                <div class="absolute top-5 left-0 h-0.5 bg-green-500 rounded pointer-events-none transition-all duration-300" aria-hidden="true" style="margin-left: 10%; width: {{ $linePercent }}%;"></div>
                 <div class="relative flex justify-between">
-                    @php
-                    $steps = ['pending', 'paid', 'processing', 'shipped'];
-                    $labels = ['Dipesan', 'Dibayar', 'Diproses', 'Dikirim'];
-                    $currentIdx = array_search(strtolower($order->status), $steps);
-                    if ($currentIdx === false && strtolower($order->status) == 'completed') $currentIdx = 4;
-                    @endphp
-
                     @foreach($steps as $key => $step)
-                    @php
-                    $isCompleted = $key <= $currentIdx; $isCurrent=$key===$currentIdx; @endphp <div
-                        class="flex flex-col items-center">
-                        <div
-                            class="h-8 w-8 rounded-full flex items-center justify-center {{ $isCompleted ? 'bg-green-500' : 'bg-gray-200' }} ring-4 ring-white">
-                            @if($isCompleted)
-                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            @else
-                            <span class="text-xs text-gray-500 font-bold">{{ $key + 1 }}</span>
-                            @endif
+                        @php $isCompleted = $key <= $currentIdx; @endphp
+                        <div class="flex flex-col items-center flex-1">
+                            <div class="h-10 w-10 rounded-full flex items-center justify-center flex-shrink-0 {{ $isCompleted ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-400' }} ring-4 ring-white shadow-sm z-10">
+                                @if($key === 0)
+                                    {{-- Ikon: Dokumen / Pesanan Dibuat --}}
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                                @elseif($key === 1)
+                                    {{-- Ikon: Pembayaran --}}
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                @elseif($key === 2)
+                                    {{-- Ikon: Diproses / Kotak --}}
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
+                                @elseif($key === 3)
+                                    {{-- Ikon: Truk / Dikirim --}}
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 17a2 2 0 11-4 0 2 2 0 014 0zM16 17a2 2 0 11-4 0 2 2 0 014 0zM5 7h14l2 4H3L5 7z" /></svg>
+                                @else
+                                    {{-- Ikon: Selesai / Bintang --}}
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                @endif
+                            </div>
+                            <div class="mt-2 text-xs font-medium text-center {{ $isCompleted ? 'text-green-600' : 'text-gray-500' }}">{{ $labels[$key] }}</div>
                         </div>
-                        <div class="mt-2 text-xs font-medium {{ $isCompleted ? 'text-green-600' : 'text-gray-500' }}">{{
-                            $labels[$key] }}</div>
+                    @endforeach
                 </div>
-                @endforeach
+            </div>
             </div>
         </div>
-    </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-        <!-- Left: Items -->
-        <div class="lg:col-span-2 space-y-6">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 items-start">
+        <div class="lg:col-span-3 space-y-6">
             <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                 <div class="px-6 py-4 border-b border-gray-100 bg-gray-50/50">
                     <h2 class="text-lg font-bold text-gray-900">Rincian Produk</h2>
@@ -151,8 +155,7 @@
             </div>
         </div>
 
-        <!-- Right: Summary -->
-        <div class="lg:col-span-1">
+        <div class="lg:col-span-2">
             <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden sticky top-24">
                 <div class="px-6 py-4 border-b border-gray-100 bg-gray-50/50">
                     <h2 class="text-lg font-bold text-gray-900">Rincian Pembayaran</h2>
