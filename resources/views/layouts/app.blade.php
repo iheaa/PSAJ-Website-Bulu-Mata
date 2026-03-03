@@ -78,40 +78,6 @@
     <!-- Content -->
     @yield('content')
 
-    <!-- Footer CTA Banner -->
-    @if(!request()->routeIs('cart.index'))
-    <section class="max-w-7xl mx-auto px-4 md:px-6 mt-32 mb-24">
-        <div
-            class="relative rounded-[3rem] bg-gradient-to-r from-sky-50 to-blue-50 overflow-hidden px-8 py-16 md:px-16 md:py-24 flex items-center justify-between">
-            <!-- Text Content -->
-            <div class="w-full md:w-1/2 relative z-10 space-y-8">
-                <h2 class="font-bold text-3xl md:text-4xl lg:text-5xl text-gray-800 leading-tight tracking-tight">
-                    Tampilkan Pesona Mata <br> Terindahmu Bersama <br> Narita Lashes
-                </h2>
-                <p class="text-gray-500 max-w-md leading-relaxed text-lg">
-                    Kami hadir untuk membantu Anda mendapatkan bulu mata lentik, rapi, dan elegan yang meningkatkan rasa
-                    percaya diri di setiap kesempatan.
-                </p>
-                <div class="pt-6">
-                    <a href="#"
-                        class="inline-block bg-[#F58634] text-white px-10 py-4 rounded-xl font-bold text-sm tracking-widest uppercase shadow-lg shadow-orange-200/50 hover:shadow-xl hover:-translate-y-1 transition transform duration-300">
-                        Book Now
-                    </a>
-                </div>
-            </div>
-
-            <!-- Image (Blended) -->
-            <div class="absolute -right-10 top-0 bottom-0 w-3/5 hidden md:block pointer-events-none">
-                <!-- Enhanced Gradient Mask -->
-                <div class="absolute inset-0 z-10 bg-gradient-to-r from-sky-50 via-transparent to-transparent"></div>
-                <img src="{{ asset('img/footer1.png') }}"
-                    class="w-full h-full object-cover object-center opacity-95 mix-blend-multiply"
-                    style="-webkit-mask-image: linear-gradient(to right, transparent 5%, black 40%); mask-image: linear-gradient(to right, transparent 5%, black 40%);">
-            </div>
-        </div>
-    </section>
-    @endif
-
     <!-- Detailed Footer -->
     <footer class="bg-white pt-16 pb-12 border-t border-gray-100/50">
         <div class="max-w-7xl mx-auto px-6">
