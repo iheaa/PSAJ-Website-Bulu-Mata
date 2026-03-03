@@ -105,9 +105,9 @@
                 </p>
 
                 <div class="pt-4">
-                    <a href="#"
+                    <a href="/catalog"
                         class="inline-block bg-[#E88D36] text-white px-10 py-4 rounded-xl font-medium shadow-lg shadow-orange-200 hover:shadow-xl hover:-translate-y-1 transition duration-300 ease-out text-lg">
-                        Book Now
+                        Buy Now
                     </a>
                 </div>
             </div>
@@ -243,9 +243,9 @@
                     percaya diri di setiap kesempatan.
                 </p>
                 <div class="pt-6">
-                    <a href="#"
+                    <a href="/catalog"
                         class="inline-block bg-[#F58634] text-white px-10 py-4 rounded-xl font-bold text-sm tracking-widest uppercase shadow-lg shadow-orange-200/50 hover:shadow-xl hover:-translate-y-1 transition transform duration-300">
-                        Book Now
+                        Buy Now
                     </a>
                 </div>
             </div>
