@@ -85,28 +85,8 @@
         </p>
     </header>
 
-    <!-- Filter Section -->
-    <section class="max-w-7xl mx-auto px-6 mb-12">
-        <div class="flex flex-wrap justify-center gap-3 md:gap-4 animate-fade-in" style="animation-delay: 0.3s;">
-            <button onclick="filterGallery('all')"
-                class="filter-btn active px-6 py-2 rounded-full text-sm tracking-wide border border-narita-gold bg-narita-gold text-white font-medium transition-all duration-300 hover:shadow-md">
-                All
-            </button>
-            <button onclick="filterGallery('natural')"
-                class="filter-btn px-6 py-2 rounded-full text-sm tracking-wide border border-gray-200 bg-white text-gray-500 font-medium hover:border-narita-gold hover:text-narita-gold transition-all duration-300 hover:shadow-md">
-                Natural
-            </button>
-            <button onclick="filterGallery('volume')"
-                class="filter-btn px-6 py-2 rounded-full text-sm tracking-wide border border-gray-200 bg-white text-gray-500 font-medium hover:border-narita-gold hover:text-narita-gold transition-all duration-300 hover:shadow-md">
-                Volume
-            </button>
-            <button onclick="filterGallery('lamination')"
-                class="filter-btn px-6 py-2 rounded-full text-sm tracking-wide border border-gray-200 bg-white text-gray-500 font-medium hover:border-narita-gold hover:text-narita-gold transition-all duration-300 hover:shadow-md">
-                Eyelash Lamination
-            </button>
-        </div>
-    </section>
-
+  <br>
+  
     <!-- Gallery Grid -->
     <section class="max-w-7xl mx-auto px-6 pb-24">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid">
@@ -191,6 +171,9 @@
 
         </div>
     </section>
+    <br>
+    <br>
+    
 
     <!-- Detailed Footer -->
     <footer class="bg-white pt-16 pb-12 border-t border-gray-100/50">
