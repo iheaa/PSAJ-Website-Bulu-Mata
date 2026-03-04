@@ -3,12 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class CatalogController extends Controller
 {
-    public function dashboard()
+    public function dashboard(Request $request)
     {
         $totalCatalogs = \App\Models\Catalog::count();
+
+        // Gunakan zona waktu Jakarta untuk filter default
+        $nowJakarta = Carbon::now('Asia/Jakarta');
+        $selectedMonth = (int) $request->query('month', $nowJakarta->month);
+        $selectedYear = (int) $request->query('year', $nowJakarta->year);
+        $selectedMonthName = Carbon::create($selectedYear, $selectedMonth, 1)->locale('id')->translatedFormat('F Y');
 
         $paidOrders = \App\Models\Order::where(function ($q) {
             $q->where('status', 'paid')
@@ -26,19 +34,47 @@ class CatalogController extends Controller
                 ->orWhere('status', 'completed');
         })->sum('quantity');
 
-        // Monthly Revenue (Current Month)
-        // We need to clone the query builder or create a new one because the previous one might be modified
+        // Monthly Revenue (selected month)
         $monthlyRevenue = \App\Models\Order::where(function ($q) {
             $q->where('status', 'paid')
                 ->orWhere('status', 'processing')
                 ->orWhere('status', 'shipped')
                 ->orWhere('status', 'completed');
         })
-            ->whereMonth('created_at', now()->month)
-            ->whereYear('created_at', now()->year)
+            ->whereMonth('created_at', $selectedMonth)
+            ->whereYear('created_at', $selectedYear)
             ->sum('total_price');
 
-        return view('admin.dashboard', compact('totalCatalogs', 'totalItemsSold', 'monthlyRevenue'));
+        // Revenue per month for selected year (for chart)
+        $revenuePerMonth = \App\Models\Order::selectRaw('MONTH(created_at) as month, SUM(total_price) as total')
+            ->where(function ($q) {
+                $q->where('status', 'paid')
+                    ->orWhere('status', 'processing')
+                    ->orWhere('status', 'shipped')
+                    ->orWhere('status', 'completed');
+            })
+            ->whereYear('created_at', $selectedYear)
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get();
+
+        $revenueLabels = [];
+        $revenueData = [];
+        foreach ($revenuePerMonth as $row) {
+            $revenueLabels[] = Carbon::create(null, $row->month, 1)->format('M');
+            $revenueData[] = (int) $row->total;
+        }
+
+        return view('admin.dashboard', [
+            'totalCatalogs' => $totalCatalogs,
+            'totalItemsSold' => $totalItemsSold,
+            'monthlyRevenue' => $monthlyRevenue,
+            'revenueLabels' => $revenueLabels,
+            'revenueData' => $revenueData,
+            'selectedMonth' => $selectedMonth,
+            'selectedYear' => $selectedYear,
+            'selectedMonthName' => $selectedMonthName,
+        ]);
     }
 
     /**

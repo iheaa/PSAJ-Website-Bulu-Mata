@@ -20,12 +20,15 @@ Route::get('/tentang', function () {
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminUserController;
 
 Route::get('/signin', [AuthController::class , 'showSignIn'])->name('signin');
 Route::post('/signin', [AuthController::class , 'login'])->name('login'); // Alias login for auth middleware
 Route::get('/signup', [AuthController::class , 'showSignUp'])->name('signup');
 Route::post('/signup', [AuthController::class , 'store']);
-Route::post('/logout', [AuthController::class , 'logout'])->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/auth/google', [AuthController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('/auth/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('auth.google.callback');
 
 // Added Profile Routes
 Route::middleware('auth')->group(function () {
@@ -52,15 +55,22 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/dashboard', [App\Http\Controllers\CatalogController::class , 'dashboard'])->name('dashboard');
     Route::resource('catalogs', App\Http\Controllers\CatalogController::class);
 
+    // User Management
+    Route::get('/users', [AdminUserController::class, 'index'])->name('users.index');
+    Route::delete('/users/{id}', [AdminUserController::class, 'destroy'])->name('users.destroy');
+
     // Order Management
     Route::get('/orders/export', [App\Http\Controllers\AdminOrderController::class , 'export'])->name('orders.export');
+    Route::get('/orders/monthly-pdf', [App\Http\Controllers\AdminOrderController::class , 'exportMonthlyPdf'])->name('orders.monthlyPdf');
     Route::get('/orders', [App\Http\Controllers\AdminOrderController::class , 'index'])->name('orders.index');
-    Route::get('/orders/{id}', [App\Http\Controllers\AdminOrderController::class , 'show'])->name('orders.show');
-    Route::patch('/orders/{id}', [App\Http\Controllers\AdminOrderController::class , 'updateStatus'])->name('orders.updateStatus');
+    Route::get('/orders/{id}', [App\Http\Controllers\AdminOrderController::class, 'show'])->name('orders.show');
+    Route::get('/orders/{id}/invoice', [App\Http\Controllers\AdminOrderController::class, 'invoicePdf'])->name('orders.invoice');
+    Route::patch('/orders/{id}', [App\Http\Controllers\AdminOrderController::class, 'updateStatus'])->name('orders.updateStatus');
 });
 
 // User Orders Routes
 Route::middleware('auth')->group(function () {
-    Route::get('/orders', [App\Http\Controllers\OrderController::class , 'index'])->name('orders.index');
-    Route::get('/orders/{id}', [App\Http\Controllers\OrderController::class , 'show'])->name('orders.show');
+    Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/{id}', [App\Http\Controllers\OrderController::class, 'show'])->name('orders.show');
+    Route::get('/orders/{id}/invoice', [App\Http\Controllers\OrderController::class, 'invoicePdf'])->name('orders.invoice');
 });

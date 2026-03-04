@@ -54,6 +54,16 @@
     </div>
 </div>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 <script>
     function addToCart(productId, btn) {
         const originalContent = btn.innerHTML;

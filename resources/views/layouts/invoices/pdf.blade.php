@@ -99,7 +99,7 @@
                     <table>
                         <tr>
                             <td class="title">
-                                PSAJ
+                                Narita Lashes
                             </td>
                             <td>
                                 Invoice #: {{ $order->id }}<br>
@@ -115,12 +115,13 @@
                     <table>
                         <tr>
                             <td>
-                                {{ $order->user->name }}<br>
-                                {{ $order->address }}<br>
-                                {{ $order->user->email }}
+                                {{ $order->customer_name }}<br>
+                                {{ $order->customer_phone }}<br>
+                                {{ $order->customer_address }}<br>
+                                @if($order->user){{ $order->user->email }}@endif
                             </td>
                             <td>
-                                PSAJ Website Bulu Mata<br>
+                                Narita Lashes<br>
                                 Jl. Kawedanan, Banyumas, Sudagaran<br>
                                 Banyumas, Jawa Tengah 53192
                             </td>
@@ -138,7 +139,7 @@
                     {{ $item->product_name }} (x{{ $item->quantity }})
                 </td>
                 <td>
-                    Rp {{ number_format($item->price * $item->quantity, 0, ',', '.') }}
+                    Rp {{ number_format($item->subtotal ?? ($item->price * $item->quantity), 0, ',', '.') }}
                 </td>
             </tr>
             @endforeach

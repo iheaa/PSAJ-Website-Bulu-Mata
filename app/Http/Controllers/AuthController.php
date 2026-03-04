@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
@@ -73,5 +74,36 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    /** Redirect to Google OAuth */
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    /** Handle Google OAuth callback: create or update user, then login */
+    public function handleGoogleCallback()
+    {
+        $googleUser = Socialite::driver('google')->user();
+
+        $user = User::where('google_id', $googleUser->getId())->first();
+
+        if (!$user) {
+            $user = User::where('email', $googleUser->getEmail())->first();
+            if ($user) {
+                $user->update(['google_id' => $googleUser->getId()]);
+            } else {
+                $user = User::create([
+                    'name' => $googleUser->getName() ?? $googleUser->getEmail(),
+                    'email' => $googleUser->getEmail(),
+                    'google_id' => $googleUser->getId(),
+                ]);
+            }
+        }
+
+        Auth::login($user, true);
+
+        return redirect('/')->with('success', 'Logged in successfully!');
     }
 }

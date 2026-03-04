@@ -13,10 +13,16 @@
 
 <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden max-w-5xl mx-auto">
     <!-- Header -->
-    <div class="bg-gray-50 px-8 py-6 border-b border-gray-200 flex justify-between items-center">
+    <div class="bg-gray-50 px-8 py-6 border-b border-gray-200 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
             <h1 class="text-2xl font-bold text-gray-900">Invoice #{{ $order->id }}</h1>
             <p class="text-sm text-gray-500 mt-1">Order Date: {{ $order->created_at->format('d F Y, H:i') }}</p>
+        </div>
+        <div class="flex items-center gap-2">
+            <a href="{{ route('admin.orders.invoice', $order->id) }}"
+                class="inline-flex items-center px-4 py-2 rounded-md text-sm font-medium border border-gray-300 bg-white text-gray-700 hover:bg-gray-50">
+                Download Invoice (PDF)
+            </a>
         </div>
         <div>
             <span class="px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wide

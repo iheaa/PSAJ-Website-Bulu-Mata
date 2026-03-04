@@ -4,8 +4,9 @@
 <div class="bg-gray-50 min-h-screen pb-20 pt-10 font-sans text-gray-800">
     <div class="container mx-auto px-4 max-w-6xl">
         <div class="mb-8">
-            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">Checkout</h1>
-            <p class="text-sm text-gray-500 mt-1">Lengkapi informasi pengiriman, lalu konfirmasi pesanan Anda.</p>
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">Checkout</h1>
+            <p class="text-sm text-gray-500 mt-2 ml-2">  Lengkapi informasi pengiriman, lalu konfirmasi pesanan Anda.</p>
+            <br>
         </div>
 
         <form action="{{ route('checkout.process') }}" method="POST" id="checkout-form" class="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 items-start">
@@ -29,20 +30,20 @@
                                 class="w-full rounded-xl border-gray-300 focus:border-orange-500 focus:ring-orange-500 py-3 px-4 shadow-sm transition-all"
                                 placeholder="Nama lengkap sesuai KTP">
                         </div>
-
+                        <br>
                         <div>
                             <label for="customer_phone" class="block text-sm font-bold text-gray-700 mb-2">Nomor WhatsApp/HP <span class="text-red-500">*</span></label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <span class="text-gray-500 sm:text-sm font-bold">+62</span>
+                                    <span class="text-gray-500 sm:text-sm font-bold"></span>
                                 </div>
                                 <input id="customer_phone" type="tel" name="customer_phone" required inputmode="numeric" autocomplete="tel"
                                     class="w-full pl-12 rounded-xl border-gray-300 focus:border-orange-500 focus:ring-orange-500 py-3 px-4 shadow-sm transition-all"
-                                    placeholder="81234567890">
+                                    placeholder="+62 81234567890">
                             </div>
                             <p class="mt-1 text-xs text-gray-500">Kami akan menghubungi via WhatsApp untuk konfirmasi pesanan.</p>
                         </div>
-
+                        <br>
                         <div>
                             <label for="customer_address" class="block text-sm font-bold text-gray-700 mb-2">Alamat Lengkap Pengiriman <span class="text-red-500">*</span></label>
                             <textarea id="customer_address" name="customer_address" rows="4" required autocomplete="street-address"
@@ -52,6 +53,9 @@
                     </div>
                 </div>
             </div>
+
+            <br>
+            <br>
 
             <!-- RIGHT: Order Summary -->
             <aside class="lg:col-span-2">
@@ -92,7 +96,7 @@
                     </div>
 
                     <button type="submit" id="pay-button"
-                        class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 rounded-xl shadow-md transition-all transform hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                        class="w-full bg-orange-600 hover:bg-orange-700 text-black font-bold py-4 rounded-xl shadow-md transition-all transform hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2">
                         <span id="btn-text">Konfirmasi Pesanan</span>
                         <svg id="btn-spinner" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -100,7 +104,8 @@
                                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
                     </button>
-
+                    <br>
+                    <br>
                     <p class="text-xs text-gray-400 mt-3 leading-relaxed">
                         Dengan menekan tombol di atas, Anda menyetujui proses pembayaran dan pembuatan pesanan.
                     </p>

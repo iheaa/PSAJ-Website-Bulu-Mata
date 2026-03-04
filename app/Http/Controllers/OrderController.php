@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Order;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
     public function index()
     {
-        // Fetch orders for the authenticated user, latest first
         $orders = Order::where('user_id', Auth::id())
             ->orderBy('created_at', 'desc')
             ->get();
@@ -20,12 +20,25 @@ class OrderController extends Controller
 
     public function show($id)
     {
-        // Fetch order with items for the authenticated user
         $order = Order::with('items')
             ->where('user_id', Auth::id())
             ->where('id', $id)
             ->firstOrFail();
 
         return view('orders.show', compact('order'));
+    }
+
+    /**
+     * Download invoice PDF for the authenticated user's order.
+     */
+    public function invoicePdf($id)
+    {
+        $order = Order::with(['items', 'user'])
+            ->where('user_id', Auth::id())
+            ->where('id', $id)
+            ->firstOrFail();
+
+        $pdf = Pdf::loadView('layouts.invoices.pdf', compact('order'))->setPaper('a4', 'portrait');
+        return $pdf->download('invoice-' . $order->id . '.pdf');
     }
 }

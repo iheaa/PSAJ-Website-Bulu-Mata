@@ -42,4 +42,10 @@ return [
         'is_sanitized' => env('MIDTRANS_SANITIZED', true),
         'is_3ds' => env('MIDTRANS_3DS', true),
     ],
+
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT_URI', env('APP_URL') . '/auth/google/callback'),
+    ],
 ];
