@@ -59,7 +59,7 @@
             {{-- Main content --}}
             <div class="flex-1 min-w-0 w-full ml-6">
                 {{-- Header (mirip referensi) --}}
-                <div class="bg-white border border-gray-200 rounded-xl shadow-sm px-6 py-5">
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm px-6 py-5 ml-4">
                     <h1 class="text-xl md:text-2xl font-bold text-gray-900">Profil Saya</h1>
                     <p class="text-sm text-gray-500 mt-1">Kelola informasi profil Anda untuk mengontrol, melindungi, dan mengamankan akun</p>
                     <div class="mt-5 border-t border-gray-100"></div>
@@ -76,7 +76,7 @@
                 {{-- Section 1: Akun Saya (Account Settings) --}}
                 <section id="panel-akun" class="profile-panel space-y-8">
                     {{-- Card: Update Profile --}}
-                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden ml-4">
                         <div class="px-6 py-4 border-b border-gray-100 bg-gray-50/50">
                             <h2 class="text-lg font-bold text-gray-900">Informasi Profil</h2>
                             <p class="text-sm text-gray-500 mt-0.5">Perbarui nama dan email Anda</p>
@@ -86,20 +86,21 @@
                             @method('patch')
                             <div class="space-y-5">
                                 <div>
-                                    <label for="name" class="block text-sm font-bold text-gray-700 mb-2">Nama Lengkap <span class="text-red-500">*</span></label>
+                                    <label for="name" class="block text-sm font-bold text-gray-700 mb-2 ml-4">Nama Lengkap <span class="text-red-500">*</span></label>
                                     <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}" required
                                         class="w-full rounded-xl border-gray-300 shadow-sm focus:border-narita-gold focus:ring-narita-gold py-3 px-4 transition-all"
                                         placeholder="Nama lengkap Anda">
                                 </div>
+                                <br>
                                 <div>
-                                    <label for="email" class="block text-sm font-bold text-gray-700 mb-2">Alamat Email <span class="text-red-500">*</span></label>
+                                    <label for="email" class="block text-sm font-bold text-gray-700 mb-2 ml-4">Alamat Email <span class="text-red-500">*</span></label>
                                     <input type="email" name="email" id="email" value="{{ old('email', $user->email) }}" required
                                         class="w-full rounded-xl border-gray-300 shadow-sm focus:border-narita-gold focus:ring-narita-gold py-3 px-4 transition-all"
                                         placeholder="email@contoh.com">
                                 </div>
                             </div>
                             <div class="mt-6">
-                                <button type="submit" class="btn-save-profile inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold text-sm text-white bg-narita-gold hover:bg-amber-600 shadow-md hover:shadow-lg transition-all disabled:opacity-70 disabled:cursor-not-allowed" data-loading-text="Menyimpan...">
+                                <button type="submit" class="btn-save-profile inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold text-sm " data-loading-text="Menyimpan...">
                                     <span class="btn-text">Simpan Perubahan</span>
                                     <span class="btn-spinner hidden">
                                         <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
@@ -113,7 +114,7 @@
                     </div>
 
                     {{-- Card: Security / Change Password --}}
-                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden ml-4">
                         <div class="px-6 py-4 border-b border-gray-100 bg-gray-50/50">
                             <h2 class="text-lg font-bold text-gray-900">Keamanan</h2>
                             <p class="text-sm text-gray-500 mt-0.5">Ubah password akun Anda</p>
@@ -123,26 +124,28 @@
                             @method('put')
                             <div class="space-y-5">
                                 <div>
-                                    <label for="current_password" class="block text-sm font-bold text-gray-700 mb-2">Password Saat Ini <span class="text-red-500">*</span></label>
+                                    <label for="current_password" class="block text-sm font-bold text-gray-700 mb-2 ml-4">Password Saat Ini <span class="text-red-500">*</span></label>
                                     <input type="password" name="current_password" id="current_password" required autocomplete="current-password"
                                         class="w-full rounded-xl border-gray-300 shadow-sm focus:border-narita-gold focus:ring-narita-gold py-3 px-4 transition-all"
                                         placeholder="••••••••">
                                 </div>
+                                <br>
                                 <div>
-                                    <label for="password" class="block text-sm font-bold text-gray-700 mb-2">Password Baru <span class="text-red-500">*</span></label>
+                                    <label for="password" class="block text-sm font-bold text-gray-700 mb-2 ml-4">Password Baru <span class="text-red-500">*</span></label>
                                     <input type="password" name="password" id="password" required autocomplete="new-password" minlength="8"
                                         class="w-full rounded-xl border-gray-300 shadow-sm focus:border-narita-gold focus:ring-narita-gold py-3 px-4 transition-all"
                                         placeholder="Min. 8 karakter">
                                 </div>
+                                <br>
                                 <div>
-                                    <label for="password_confirmation" class="block text-sm font-bold text-gray-700 mb-2">Konfirmasi Password Baru <span class="text-red-500">*</span></label>
+                                    <label for="password_confirmation" class="block text-sm font-bold text-gray-700 mb-2 ml-4">Konfirmasi Password Baru <span class="text-red-500">*</span></label>
                                     <input type="password" name="password_confirmation" id="password_confirmation" required autocomplete="new-password"
                                         class="w-full rounded-xl border-gray-300 shadow-sm focus:border-narita-gold focus:ring-narita-gold py-3 px-4 transition-all"
                                         placeholder="••••••••">
                                 </div>
                             </div>
                             <div class="mt-6">
-                                <button type="submit" class="btn-save-password inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold text-sm text-white bg-gray-800 hover:bg-gray-900 shadow-md hover:shadow-lg transition-all disabled:opacity-70 disabled:cursor-not-allowed" data-loading-text="Menyimpan...">
+                                <button type="submit" class="btn-save-password inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold text-sm bg-gray-800 hover:bg-gray-900 shadow-md hover:shadow-lg transition-all disabled:opacity-70 disabled:cursor-not-allowed" data-loading-text="Menyimpan...">
                                     <span class="btn-text">Simpan Password</span>
                                     <span class="btn-spinner hidden">
                                         <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
