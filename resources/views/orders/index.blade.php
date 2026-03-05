@@ -47,7 +47,7 @@
                             $label = $statusLabel[$currentStatus] ?? ucfirst($currentStatus);
                             @endphp
                             <span
-                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border {{ $class }}">
+                                class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium border {{ $class }}">
                                 {{ $label }}
                             </span>
                         </div>

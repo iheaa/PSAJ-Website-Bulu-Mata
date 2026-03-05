@@ -188,7 +188,9 @@
                     </div>
                 </div>
             </div>
+            <br>
         </div>
+
 
         <div class="lg:col-span-2">
             <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden sticky top-24">
