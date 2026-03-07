@@ -60,8 +60,8 @@
             <div class="flex-1 min-w-0 w-full ml-6">
                 {{-- Header (mirip referensi) --}}
                 <div class="bg-white border border-gray-200 rounded-xl shadow-sm px-6 py-5 ml-4">
-                    <h1 class="text-xl md:text-2xl font-bold text-gray-900">Profil Saya</h1>
-                    <p class="text-sm text-gray-500 mt-1">Kelola informasi profil Anda untuk mengontrol, melindungi, dan mengamankan akun</p>
+                    <h1 class="text-xl md:text-2xl font-bold text-gray-900 mt-2">Profil Saya</h1>
+                    <p class="text-sm text-gray-500 mt-1 mb-4">Kelola informasi profil Anda untuk mengontrol, melindungi, dan mengamankan akun</p>
                     <div class="mt-5 border-t border-gray-100"></div>
 
                     {{-- Mobile tabs --}}
@@ -100,14 +100,21 @@
                                 </div>
                             </div>
                             <div class="mt-6">
-                                <button type="submit" class="btn-save-profile inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold text-sm " data-loading-text="Menyimpan...">
+                                <button 
+                                type="submit" 
+                                class="btn-save-profile inline-flex items-center justify-center px-6 py-3 rounded-full font-bold text-sm w-fit bg-gray-300"
+                                data-loading-text="Menyimpan...">
+
                                     <span class="btn-text">Simpan Perubahan</span>
+
                                     <span class="btn-spinner hidden">
-                                        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                                        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                            <path class="opacity-75" fill="currentColor"
+                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
                                         </svg>
                                     </span>
+
                                 </button>
                             </div>
                         </form>
@@ -145,7 +152,7 @@
                                 </div>
                             </div>
                             <div class="mt-6">
-                                <button type="submit" class="btn-save-password inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold text-sm bg-gray-800 hover:bg-gray-900 shadow-md hover:shadow-lg transition-all disabled:opacity-70 disabled:cursor-not-allowed" data-loading-text="Menyimpan...">
+                                <button type="submit" class="btn-save-password inline-flex items-center justify-center px-6 py-3 rounded-full font-bold text-sm w-fit bg-gray-300" data-loading-text="Menyimpan...">
                                     <span class="btn-text">Simpan Password</span>
                                     <span class="btn-spinner hidden">
                                         <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
@@ -192,7 +199,7 @@
                                     $class = $statusClasses[$currentStatus] ?? 'bg-gray-100 text-gray-800 border-gray-200';
                                     $label = $statusLabel[$currentStatus] ?? ucfirst($order->status);
                                 @endphp
-                                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+                                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow ml-4">
                                     <div class="p-4 sm:p-5 flex flex-col sm:flex-row gap-4 sm:items-center">
                                         {{-- Product thumbnail (first item) --}}
                                         <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl bg-gray-100 border border-gray-200 flex-shrink-0 overflow-hidden">
