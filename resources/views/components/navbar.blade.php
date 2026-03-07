@@ -63,19 +63,43 @@
                             class="absolute -top-2 right-6 w-4 h-4 bg-white border-t border-l border-gray-100 transform rotate-45">
                         </div>
 
-                        <div class="px-5 py-3 border-b border-gray-50 relative z-10">
-                            <p class="text-xs text-gray-400 font-medium uppercase tracking-wider">Signed in as</p>
-                            <p class="text-sm font-bold text-gray-900 truncate mt-0.5">{{ Auth::user()->name }}</p>
+                        <div class="px-5 py-4 border-b border-gray-50 relative z-10 flex items-center gap-3">
+                            <div class="h-9 w-9 rounded-full bg-narita-gold/10 flex items-center justify-center text-xs font-bold text-narita-gold">
+                                {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                            </div>
+                            <div class="min-w-0">
+                                <p class="text-sm font-semibold text-gray-900 truncate">{{ Auth::user()->name }}</p>
+                                <p class="text-xs text-gray-500">Akun pelanggan</p>
+                            </div>
                         </div>
 
                         <div class="py-1 relative z-10">
+                            @if(Auth::user()->is_admin ?? false)
+                                <a href="{{ route('admin.dashboard') }}"
+                                    class="flex items-center px-5 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors font-medium">
+                                    <svg class="mr-3 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"
+                                            d="M3 12l2-2m0 0l7-7 7 7M5 10v9a1 1 0 001 1h3m10-10l2 2m-2-2v9a1 1 0 01-1 1h-3m-6 0h6" />
+                                    </svg>
+                                    <span>Admin Dashboard</span>
+                                </a>
+                                <div class="my-1 border-t border-gray-100"></div>
+                            @endif
                             <a href="{{ route('profile.edit') }}"
-                                class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-[#F3E5DC]/30 hover:text-narita-gold transition-colors font-medium">
-                                Profil Saya
+                                class="flex items-center px-5 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors font-medium">
+                                <svg class="mr-3 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"
+                                        d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.118a7.5 7.5 0 0115 0A17.9 17.9 0 0112 21.75c-2.676 0-5.216-.584-7.5-1.632z" />
+                                </svg>
+                                <span>Profil Saya</span>
                             </a>
                             <a href="{{ route('orders.index') }}"
-                                class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-[#F3E5DC]/30 hover:text-narita-gold transition-colors font-medium">
-                                Lihat Pesanan
+                                class="flex items-center px-5 py-2.5 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-colors font-medium">
+                                <svg class="mr-3 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"
+                                        d="M3 3h2l.4 2M7 13h10l3-8H6.4M7 13L5.4 5M7 13l-2 5m12-5l2 5M10 21a1 1 0 11-2 0 1 1 0 012 0zm8 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                                </svg>
+                                <span>Lihat Pesanan</span>
                             </a>
                         </div>
 
@@ -83,8 +107,12 @@
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit"
-                                    class="block w-full text-left px-5 py-2.5 text-sm text-red-500 hover:bg-red-50 hover:text-red-600 transition-colors font-semibold">
-                                    Logout
+                                    class="flex items-center w-full text-left px-5 py-2.5 text-sm text-red-500 hover:bg-red-50 hover:text-red-600 transition-colors font-semibold">
+                                    <svg class="mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"
+                                            d="M17 16l4-4m0 0l-4-4m4 4H9m4 4v1a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2h5a2 2 0 012 2v1" />
+                                    </svg>
+                                    <span>Logout</span>
                                 </button>
                             </form>
                         </div>
@@ -169,6 +197,12 @@
                         </div>
                         <span class="text-lg font-bold text-gray-800">{{ Auth::user()->name }}</span>
                     </div>
+                    @if(Auth::user()->is_admin ?? false)
+                    <a href="{{ route('admin.dashboard') }}"
+                        class="block w-full text-center px-6 py-3 rounded-xl text-gray-700 hover:text-narita-gold hover:bg-[#F3E5DC]/40 font-semibold mb-2 transition-colors border border-gray-200">
+                        Admin Dashboard
+                    </a>
+                    @endif
                     <a href="{{ route('profile.edit') }}"
                         class="block w-full text-center px-6 py-3 rounded-xl text-gray-600 hover:text-narita-gold hover:bg-[#F3E5DC]/30 font-medium mb-2 transition-colors">
                         Profil Saya
@@ -207,6 +241,7 @@
 
             function toggleDropdown(open) {
                 isOpen = open;
+                userBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
                 if (isOpen) {
                     userDropdown.classList.remove('opacity-0', 'translate-y-2', 'pointer-events-none');
                     userDropdown.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
@@ -224,6 +259,13 @@
             // Close dropdown when clicking outside
             document.addEventListener('click', (e) => {
                 if (isOpen && !userBtn.contains(e.target) && !userDropdown.contains(e.target)) {
+                    toggleDropdown(false);
+                }
+            });
+
+            // Close dropdown with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (isOpen && e.key === 'Escape') {
                     toggleDropdown(false);
                 }
             });

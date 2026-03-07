@@ -57,9 +57,9 @@
 
             </aside>
             {{-- Main content --}}
-            <div class="flex-1 min-w-0 w-full ml-6">
+            <div class="flex-1 min-w-0 w-full md:pl-6 lg:pl-8">
                 {{-- Header (mirip referensi) --}}
-                <div class="bg-white border border-gray-200 rounded-xl shadow-sm px-6 py-5 ml-4">
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm px-6 py-5">
                     <h1 class="text-xl md:text-2xl font-bold text-gray-900 mt-2">Profil Saya</h1>
                     <p class="text-sm text-gray-500 mt-1 mb-4">Kelola informasi profil Anda untuk mengontrol, melindungi, dan mengamankan akun</p>
                     <div class="mt-5 border-t border-gray-100"></div>
@@ -72,11 +72,11 @@
                 </div>
 
                 {{-- Tab panels --}}
-                <div class="mt-6">
+                <div class="mt-6 space-y-6">
                 {{-- Section 1: Akun Saya (Account Settings) --}}
                 <section id="panel-akun" class="profile-panel space-y-8">
                     {{-- Card: Update Profile --}}
-                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden ml-4">
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                         <div class="px-6 py-4 border-b border-gray-100 bg-gray-50/50">
                             <h2 class="text-lg font-bold text-gray-900">Informasi Profil</h2>
                             <p class="text-sm text-gray-500 mt-0.5">Perbarui nama dan email Anda</p>
@@ -121,7 +121,7 @@
                     </div>
 
                     {{-- Card: Security / Change Password --}}
-                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden ml-4">
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                         <div class="px-6 py-4 border-b border-gray-100 bg-gray-50/50">
                             <h2 class="text-lg font-bold text-gray-900">Keamanan</h2>
                             <p class="text-sm text-gray-500 mt-0.5">Ubah password akun Anda</p>
@@ -173,7 +173,7 @@
                     </div>
 
                     @if($orders->count() > 0)
-                        <div class="space-y-4 overflow-x-hidden">
+                        <div class="space-y-4 md:space-y-5 lg:space-y-6 overflow-x-hidden">
                             @foreach($orders as $order)
                                 @php
                                     $firstItem = $order->items->first();
@@ -199,10 +199,10 @@
                                     $class = $statusClasses[$currentStatus] ?? 'bg-gray-100 text-gray-800 border-gray-200';
                                     $label = $statusLabel[$currentStatus] ?? ucfirst($order->status);
                                 @endphp
-                                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow ml-4">
-                                    <div class="p-4 sm:p-5 flex flex-col sm:flex-row gap-4 sm:items-center">
+                                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md md:hover:shadow-lg md:hover:-translate-y-0.5 transition-all">
+                                    <div class="p-4 sm:p-5 md:p-6 flex flex-col gap-4 md:grid md:grid-cols-[auto,minmax(0,1fr),auto] md:items-center md:gap-6">
                                         {{-- Product thumbnail (first item) --}}
-                                        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl bg-gray-100 border border-gray-200 flex-shrink-0 overflow-hidden">
+                                        <div class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-2xl bg-gray-100 border border-gray-200 flex-shrink-0 overflow-hidden">
                                             @if($firstItem && $firstItem->product && $firstItem->product->image)
                                                 <img src="{{ asset($firstItem->product->image) }}" alt="{{ $firstItem->product_name }}" class="w-full h-full object-cover">
                                             @else
@@ -215,22 +215,24 @@
                                         </div>
                                         {{-- Details --}}
                                         <div class="flex-1 min-w-0">
-                                            <p class="text-sm font-bold text-gray-900">
+                                            <p class="text-sm md:text-base font-semibold text-gray-900 line-clamp-2">
                                                 @if($order->items->count() === 1)
                                                     {{ $firstItem ? $firstItem->product_name : 'Pesanan #' . $order->id }}
                                                 @else
                                                     {{ $firstItem ? $firstItem->product_name : 'Pesanan' }} +{{ $order->items->count() - 1 }} barang lainnya
                                                 @endif
                                             </p>
-                                            <p class="text-xs text-gray-500 mt-1">
+                                            <p class="text-xs md:text-sm text-gray-500 mt-1">
                                                 {{ $order->items->sum('quantity') }} barang · Total Rp {{ number_format($order->total_price, 0, ',', '.') }}
                                             </p>
-                                            <p class="text-xs text-gray-400 mt-1">{{ $order->created_at->format('d M Y, H:i') }}</p>
-                                            <span class="inline-flex items-center mt-2 px-2.5 py-0.5 rounded-full text-xs font-medium border {{ $class }}">{{ $label }}</span>
+                                            <div class="mt-2 flex flex-wrap items-center gap-2 text-xs md:text-[13px]">
+                                                <p class="text-gray-400">{{ $order->created_at->format('d M Y, H:i') }}</p>
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-medium border {{ $class }}">{{ $label }}</span>
+                                            </div>
                                         </div>
                                         {{-- Action --}}
-                                        <div class="flex-shrink-0">
-                                            <a href="{{ route('orders.show', $order->id) }}" class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-narita-gold hover:bg-amber-600 shadow-sm transition-all">
+                                        <div class="flex-shrink-0 md:justify-self-end">
+                                            <a href="{{ route('orders.show', $order->id) }}" class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-narita-gold hover:bg-amber-600 shadow-sm hover:shadow-md transition-all">
                                                 Detail Pesanan
                                             </a>
                                         </div>
