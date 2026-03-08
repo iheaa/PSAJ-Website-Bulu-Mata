@@ -56,69 +56,68 @@
 
                     <!-- Dropdown Menu -->
                     <div id="user-menu-dropdown"
-                        class="absolute right-[5px] mt-2 w-[240px] bg-white rounded-3xl shadow-[0_4px_20px_rgb(0,0,0,0.1)] border border-slate-200 py-3 origin-top-right transition-all duration-300 transform opacity-0 translate-y-2 pointer-events-none z-[120] overflow-hidden">
+                        class="absolute right-0 mt-2 w-[160px] md:w-[155px] bg-white rounded-[20px] shadow-[0_4px_15px_rgb(0,0,0,0.08)] border border-slate-300 origin-top-right transition-all duration-300 transform opacity-0 translate-y-2 pointer-events-none z-[120] overflow-hidden">
 
                         <!-- Arrow pointing up removed since not in design -->
 
-                        <div class="px-5 py-2 relative z-10 flex items-start gap-4">
-                            <h1 class="text-2xl font-bold text-[#D4AF37] leading-none mt-1">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</h1>
+                        <div class="px-4 py-3 relative z-10 flex items-center justify-start gap-2 bg-white pl-[22px]">
+                            <h1 class="text-sm font-extrabold text-[#D4AF37] leading-none">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</h1>
                             <div class="flex-1 min-w-0">
-                                <p class="text-[16px] font-bold text-slate-800 leading-tight">{{ Auth::user()->name }}</p>
-                                <p class="text-[14px] text-slate-500 mt-0.5">Akun pelanggan</p>
+                                <p class="text-[13px] sm:text-sm font-bold text-slate-700 leading-tight truncate">{{ Auth::user()->name }}</p>
                             </div>
                         </div>
 
-                        <div class="my-2 border-t border-slate-200 mx-0"></div>
+                        <div class="border-t border-slate-300 mx-0"></div>
 
-                        <div class="py-1 relative z-10 flex flex-col">
+                        <div class="py-1 relative z-10 flex flex-col bg-white">
                             @if(Auth::user()->is_admin ?? false)
                                 <a href="{{ route('admin.dashboard') }}"
-                                    class="flex items-center px-4 py-3 hover:bg-slate-50 transition-colors group">
-                                    <div class="w-10 flex justify-center flex-shrink-0">
-                                        <svg class="h-6 w-6 text-slate-500 group-hover:text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    class="flex items-center px-4 py-2 hover:bg-slate-50 transition-colors group">
+                                    <div class="w-6 flex justify-center mr-2 flex-shrink-0">
+                                        <svg class="h-4 w-4 text-slate-600 group-hover:text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
                                                 d="M3 12l2-2m0 0l7-7 7 7M5 10v9a1 1 0 001 1h3m10-10l2 2m-2-2v9a1 1 0 01-1 1h-3m-6 0h6" />
                                         </svg>
                                     </div>
-                                    <span class="text-[16px] text-slate-700 font-medium group-hover:text-slate-900 leading-tight">Lihat Dashboard Admin</span>
+                                    <span class="text-[12px] sm:text-[13px] text-slate-600 font-medium group-hover:text-slate-800 leading-tight">Lihat Dashboard Admin</span>
                                 </a>
                             @endif
                             <a href="{{ route('profile.edit') }}"
-                                class="flex items-center px-4 py-3 hover:bg-slate-50 transition-colors group">
-                                <div class="w-10 flex justify-center flex-shrink-0">
-                                    <svg class="h-6 w-6 text-slate-500 group-hover:text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                class="flex items-center px-4 py-2 hover:bg-slate-50 transition-colors group">
+                                <div class="w-6 flex justify-center mr-2 flex-shrink-0">
+                                    <svg class="h-[18px] w-[18px] text-slate-600 group-hover:text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
-                                            d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.118a7.5 7.5 0 0115 0A17.9 17.9 0 0112 21.75c-2.676 0-5.216-.584-7.5-1.632z" />
+                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                     </svg>
                                 </div>
-                                <span class="text-[16px] text-slate-700 font-medium group-hover:text-slate-900">Profil Saya</span>
+                                <span class="text-[12px] sm:text-[13px] text-slate-600 font-medium group-hover:text-slate-800">Profil<br>Saya</span>
                             </a>
                             <a href="{{ route('orders.index') }}"
-                                class="flex items-center px-4 py-3 hover:bg-slate-50 transition-colors group">
-                                <div class="w-10 flex justify-center flex-shrink-0">
-                                    <svg class="h-6 w-6 text-slate-500 group-hover:text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                class="flex items-center px-4 py-2 hover:bg-slate-50 transition-colors group">
+                                <div class="w-6 flex justify-center mr-2 flex-shrink-0">
+                                    <svg class="h-[18px] w-[18px] text-slate-600 group-hover:text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
                                             d="M3 3h2l.4 2M7 13h10l3-8H6.4M7 13L5.4 5M7 13l-2 5m12-5l2 5M10 21a1 1 0 11-2 0 1 1 0 012 0zm8 0a1 1 0 11-2 0 1 1 0 012 0z" />
                                     </svg>
                                 </div>
-                                <span class="text-[16px] text-slate-700 font-medium group-hover:text-slate-900 leading-tight">Lihat Pesanan</span>
+                                <span class="text-[12px] sm:text-[13px] text-slate-600 font-medium group-hover:text-slate-800 leading-tight">Lihat<br>Pesanan</span>
                             </a>
                         </div>
 
-                        <div class="my-2 border-t border-slate-200 mx-0"></div>
+                        <div class="border-t border-slate-300 mx-0"></div>
 
-                        <div class="py-1 relative z-10 flex flex-col">
+                        <div class="py-1 relative z-10 flex flex-col bg-white">
                             <form method="POST" action="{{ route('logout') }}" class="w-full">
                                 @csrf
                                 <button type="submit"
-                                    class="flex items-center w-full text-left px-4 py-3 hover:bg-slate-50 transition-colors group">
-                                    <div class="w-10 flex justify-center flex-shrink-0">
-                                        <svg class="h-6 w-6 text-slate-600 group-hover:text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                                    class="flex items-center w-full text-left px-4 py-2.5 hover:bg-slate-50 transition-colors group">
+                                    <div class="w-6 flex justify-center mr-2 flex-shrink-0">
+                                        <svg class="h-[18px] w-[18px] text-slate-600 group-hover:text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M17 16l4-4m0 0l-4-4m4 4H9m4 4v1a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2h5a2 2 0 012 2v1" />
                                         </svg>
                                     </div>
-                                    <span class="text-[16px] text-slate-700 font-bold group-hover:text-slate-900">Logout</span>
+                                    <span class="text-[13px] sm:text-[14px] text-slate-700 font-bold group-hover:text-slate-900">Logout</span>
                                 </button>
                             </form>
                         </div>

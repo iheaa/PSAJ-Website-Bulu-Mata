@@ -173,7 +173,7 @@
                     </div>
 
                     @if($orders->count() > 0)
-                        <div class="space-y-4 md:space-y-5 lg:space-y-6 overflow-x-hidden">
+                        <div class="space-y-4 md:srpace-y-5 lg:space-y-6 overflow-x-hidden">
                             @foreach($orders as $order)
                                 @php
                                     $firstItem = $order->items->first();
@@ -227,7 +227,7 @@
                                             </p>
                                             <div class="mt-2 flex flex-wrap items-center gap-2 text-xs md:text-[13px]">
                                                 <p class="text-gray-400">{{ $order->created_at->format('d M Y, H:i') }}</p>
-                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-medium border {{ $class }}">{{ $label }}</span>
+                                                <span class="inline-flex items-center px-4 py-1 rounded-full text-xs leading-none font-medium border ml-2 {{ $class }}">{{ $label }}</span>
                                             </div>
                                         </div>
                                         
