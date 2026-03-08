@@ -57,7 +57,7 @@
 
             </aside>
             {{-- Main content --}}
-            <div class="flex-1 min-w-0 w-full md:pl-6 lg:pl-8">
+            <div class="flex-1 min-w-0 w-full md:pl-6 lg:pl-8 ml-2">
                 {{-- Header (mirip referensi) --}}
                 <div class="bg-white border border-gray-200 rounded-xl shadow-sm px-6 py-5">
                     <h1 class="text-xl md:text-2xl font-bold text-gray-900 mt-2">Profil Saya</h1>
@@ -200,9 +200,9 @@
                                     $label = $statusLabel[$currentStatus] ?? ucfirst($order->status);
                                 @endphp
                                 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md md:hover:shadow-lg md:hover:-translate-y-0.5 transition-all">
-                                    <div class="p-4 sm:p-5 md:p-6 flex flex-col gap-4 md:grid md:grid-cols-[auto,minmax(0,1fr),auto] md:items-center md:gap-6">
+                                    <div class="p-4 sm:p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
                                         {{-- Product thumbnail (first item) --}}
-                                        <div class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-2xl bg-gray-100 border border-gray-200 flex-shrink-0 overflow-hidden">
+                                        <div class="w-20 h-20 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-20 lg:h-20 rounded-2xl bg-gray-100 border border-gray-200 flex-shrink-0 overflow-hidden">
                                             @if($firstItem && $firstItem->product && $firstItem->product->image)
                                                 <img src="{{ asset($firstItem->product->image) }}" alt="{{ $firstItem->product_name }}" class="w-full h-full object-cover">
                                             @else
@@ -230,12 +230,7 @@
                                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-medium border {{ $class }}">{{ $label }}</span>
                                             </div>
                                         </div>
-                                        {{-- Action --}}
-                                        <div class="flex-shrink-0 md:justify-self-end">
-                                            <a href="{{ route('orders.show', $order->id) }}" class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-narita-gold hover:bg-amber-600 shadow-sm hover:shadow-md transition-all">
-                                                Detail Pesanan
-                                            </a>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             @endforeach
