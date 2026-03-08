@@ -60,7 +60,7 @@
                 </div>
                 <div class="ml-5 w-0 flex-1">
                     <dl>
-                        <dt class="text-sm font-medium text-gray-500 truncate">Total Catalogs</dt>
+                        <dt class="text-sm font-medium text-gray-500 truncate">Total Katalog</dt>
                         <dd>
                             <div class="text-lg font-medium text-gray-900">{{ $totalCatalogs }}</div>
                         </dd>
@@ -88,7 +88,7 @@
                 </div>
                 <div class="ml-5 w-0 flex-1">
                     <dl>
-                        <dt class="text-sm font-medium text-gray-500 truncate">Total Items Sold</dt>
+                        <dt class="text-sm font-medium text-gray-500 truncate">Total Barang Terjual</dt>
                         <dd>
                             <div class="text-lg font-medium text-gray-900">{{ $totalItemsSold }}</div>
                         </dd>
