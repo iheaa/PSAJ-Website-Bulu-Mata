@@ -18,7 +18,7 @@
                     <div class="flex-1">
                         <div class="flex items-center gap-3 mb-2">
                             <span class="text-sm font-bold text-gray-900">Order #{{ $order->id }}</span>
-                            <span class="text-xs text-gray-500">{{ $order->created_at->format('d M Y, H:i') }}</span>
+                            <span class="text-xs text-gray-500 ml-2">{{ $order->created_at->format('d M Y, H:i') }}</span>
                         </div>
 
                         <!-- Status Badge -->

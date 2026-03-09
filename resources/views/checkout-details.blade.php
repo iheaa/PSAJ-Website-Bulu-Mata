@@ -25,14 +25,14 @@
 
                     <div class="grid grid-cols-1 gap-5">
                         <div>
-                            <label for="customer_name" class="block text-sm font-bold text-gray-700 mb-2">Nama Lengkap Penerima <span class="text-red-500">*</span></label>
+                            <label for="customer_name" class="block text-sm font-bold text-gray-700 mb-3 ml-4">Nama Lengkap Penerima <span class="text-red-500">*</span></label>
                             <input id="customer_name" type="text" name="customer_name" required autocomplete="name"
                                 class="w-full rounded-xl border-gray-300 focus:border-orange-500 focus:ring-orange-500 py-3 px-4 shadow-sm transition-all"
                                 placeholder="Nama lengkap sesuai KTP">
                         </div>
                         <br>
                         <div>
-                            <label for="customer_phone" class="block text-sm font-bold text-gray-700 mb-2">Nomor WhatsApp/HP <span class="text-red-500">*</span></label>
+                            <label for="customer_phone" class="block text-sm font-bold text-gray-700 mb-3 ml-4">Nomor WhatsApp/HP <span class="text-red-500">*</span></label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <span class="text-gray-500 sm:text-sm font-bold"></span>
@@ -41,11 +41,11 @@
                                     class="w-full pl-12 rounded-xl border-gray-300 focus:border-orange-500 focus:ring-orange-500 py-3 px-4 shadow-sm transition-all"
                                     placeholder="+62 81234567890">
                             </div>
-                            <p class="mt-1 text-xs text-gray-500">Kami akan menghubungi via WhatsApp untuk konfirmasi pesanan.</p>
+                            <p class="mt-1 text-xs text-gray-500 mt-4z1 ml-4">Kami akan menghubungi via WhatsApp untuk konfirmasi pesanan.</p>
                         </div>
                         <br>
                         <div>
-                            <label for="customer_address" class="block text-sm font-bold text-gray-700 mb-2">Alamat Lengkap Pengiriman <span class="text-red-500">*</span></label>
+                            <label for="customer_address" class="block text-sm font-bold text-gray-700 mb-2 ml-4">Alamat Lengkap Pengiriman <span class="text-red-500">*</span></label>
                             <textarea id="customer_address" name="customer_address" rows="4" required autocomplete="street-address"
                                 class="w-full rounded-xl border-gray-300 focus:border-orange-500 focus:ring-orange-500 py-3 px-4 shadow-sm transition-all"
                                 placeholder="Nama Jalan, No. Rumah, RT/RW, Kelurahan, Kecamatan, Kota, Provinsi, Kode Pos."></textarea>
@@ -60,20 +60,20 @@
             <!-- RIGHT: Order Summary -->
             <aside class="lg:col-span-2">
                 <div class="bg-white p-6 md:p-7 rounded-2xl shadow-sm border border-gray-100 sticky top-24">
-                    <h2 class="text-lg md:text-xl font-bold text-gray-900 mb-5 pb-4 border-b border-gray-100">Ringkasan Pesanan</h2>
+                    <h2 class="text-lg md:text-xl font-bold text-gray-900 mb-5 pb-4 border-b border-gray-100 mb-4">Ringkasan Pesanan</h2>
 
                     <!-- Mini Cart Preview -->
                     <div class="space-y-4 mb-6 max-h-72 overflow-y-auto pr-2">
                         @foreach($cart as $item)
-                        <div class="flex items-center gap-4">
+                       <div class="flex items-center gap-4">
                             <div class="w-12 h-12 bg-gray-100 rounded-xl overflow-hidden flex-shrink-0 border border-gray-200">
                                 <img src="{{ asset($item['image']) }}" alt="{{ $item['name'] }}" class="w-full h-full object-cover">
                             </div>
-                            <div class="flex-1 min-w-0">
-                                <p class="text-sm font-bold text-gray-900 truncate">{{ $item['name'] }}</p>
-                                <p class="text-xs text-gray-500 mt-0.5">{{ $item['quantity'] }} x Rp {{ number_format((int)$item['price'], 0, ',', '.') }}</p>
-                            </div>
-                            <div class="text-right">
+                                    <div class=" min-w-0">
+                                    <p class="text-sm font-bold text-gray-900 truncate">{{ $item['name'] }}</p>
+                                    <p class="text-xs text-gray-500 mt-0.5">{{ $item['quantity'] }} x Rp {{ number_format((int)$item['price'], 0, ',', '.') }}</p>
+                                </div>
+                            <div class="text-right ml-auto">
                                 <p class="text-sm font-bold text-gray-900">Rp {{ number_format((int)$item['price'] * (int)$item['quantity'], 0, ',', '.') }}</p>
                             </div>
                         </div>
@@ -97,7 +97,7 @@
 
                     <button type="submit" id="pay-button"
                         class="w-full bg-orange-600 hover:bg-orange-700 text-black font-bold py-4 rounded-xl shadow-md transition-all transform hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2">
-                        <span id="btn-text">Konfirmasi Pesanan</span>
+                        <span id="btn-text"class="border border-gray-400 px-6 py-2 rounded-full text-sm">Konfirmasi Pesanan</span>
                         <svg id="btn-spinner" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                             <path class="opacity-75" fill="currentColor"
