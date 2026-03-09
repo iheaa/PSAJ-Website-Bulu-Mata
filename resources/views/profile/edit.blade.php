@@ -29,11 +29,11 @@
                 <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
                     {{-- User summary --}}
                     <div class="px-5 py-5 border-b border-gray-100 flex items-center gap-4">
-                        <div class="h-12 w-12 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center font-bold text-gray-700">
+                        <div class="flex-shrink-0 h-12 w-12 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center font-bold text-gray-700">
                             {{ strtoupper(substr($user->name, 0, 1)) }}
                         </div>
-                        <div class="min-w-0">
-                            <div class="text-sm font-bold text-gray-900 truncate">{{ $user->name }}</div>
+                        <div class="in-w-0 flex-1 py-1 pr-6">
+                            <div class="text-sm font-bold text-gray-900 truncate px-4 py-2 bg-gray-50 rounded-lg">{{ $user->name }}</div>
                         </div>
                     </div>
 
@@ -238,14 +238,16 @@
                     @else
                         {{-- Empty state --}}
                         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12 text-center">
-                            <div class="w-20 h-20 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-5">
-                                <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="w-12 h-12 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-5">
+                                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
                                 </svg>
                             </div>
+                            <br>
                             <h3 class="text-lg font-bold text-gray-900 mb-2">Belum Ada Pesanan</h3>
                             <p class="text-gray-500 text-sm max-w-sm mx-auto mb-6">Anda belum memiliki riwayat pembelian. Mulai temukan produk bulu mata favorit Anda.</p>
-                            <a href="{{ route('catalog.index') }}" class="inline-flex items-center justify-center px-8 py-3 rounded-xl font-bold text-sm text-white bg-narita-gold hover:bg-amber-600 shadow-md hover:shadow-lg transition-all">
+                          <a href="{{ route('catalog.index') }}" 
+                                class="inline-flex items-center justify-center px-8 py-3 mx-4 rounded-xl font-bold text-sm bg-transparent border-2 border-narita-gold  hover:bg-narita-gold hover:text-narita-gold shadow-sm hover:shadow-md transition-all">
                                 Belanja Sekarang
                             </a>
                         </div>
