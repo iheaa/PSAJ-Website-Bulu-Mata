@@ -216,7 +216,7 @@
 
                     @if(in_array(strtolower($order->status), ['pending', 'unpaid']))
                     <button id="btn-pay-now"
-                        class="w-full mt-6 bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded-xl transition-all shadow-md disabled:opacity-70 disabled:cursor-not-allowed">
+                        class="mt-3 w-full inline-flex items-center justify-center px-4 py-2.5 border border-gray-300 rounded-xl text-sm font-semibold text-gray-700 bg-white hover:bg-gray-50">
                         Bayar Sekarang
                     </button>
                     @endif

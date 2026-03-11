@@ -28,7 +28,7 @@
         </div>
 
         <a href="{{ route('catalog.index') }}"
-            class="block w-full bg-gray-900 text-white font-bold py-4 rounded-xl hover:bg-gray-800 transition-colors">
+            class="block w-full bg-gray-900  font-bold py-4 rounded-xl hover:bg-gray-800 transition-colors">
             Kembali ke Katalog
         </a>
     </div>

@@ -43,14 +43,14 @@
                             <span class="profile-tab-icon flex-shrink-0 w-6 h-6 text-red-600">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
                             </span>
-                            <span class="profile-tab-label text-red-600">Akun Saya</span>
+                            <span class="profile-tab-label text-red-600 ml-2">Akun Saya</span>
                         </button>
 
                         <button type="button" data-tab="pesanan" class="profile-tab profile-tab--desktop flex items-center gap-3 w-full px-5 py-3 text-left text-sm font-semibold transition-colors hover:bg-gray-50/80">
                             <span class="profile-tab-icon flex-shrink-0 w-6 h-6 text-gray-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75M9 6h6.75M6 3.75h12A2.25 2.25 0 0120.25 6v14.25A2.25 2.25 0 0118 22.5H6A2.25 2.25 0 013.75 20.25V6A2.25 2.25 0 016 3.75z" /></svg>
                             </span>
-                            <span class="profile-tab-label text-gray-600">Pesanan Saya</span>
+                            <span class="profile-tab-label text-gray-600 ml-2">Pesanan Saya</span>
                         </button>
                     </div>
                 </div>
@@ -245,7 +245,7 @@
                             </div>
                             <br>
                             <h3 class="text-lg font-bold text-gray-900 mb-2">Belum Ada Pesanan</h3>
-                            <p class="text-gray-500 text-sm max-w-sm mx-auto mb-6">Anda belum memiliki riwayat pembelian. Mulai temukan produk bulu mata favorit Anda.</p>
+                            <p class="text-gray-500 text-sm max-w-sm mx-auto mb-6">Anda belum memiliki riwayat pembelian. Mulai temukan produk bulu mata favorit Anda.</p>1
                           <a href="{{ route('catalog.index') }}" 
                                 class="inline-flex items-center justify-center px-8 py-3 mx-4 rounded-xl font-bold text-sm bg-transparent border-2 border-narita-gold  hover:bg-narita-gold hover:text-narita-gold shadow-sm hover:shadow-md transition-all">
                                 Belanja Sekarang

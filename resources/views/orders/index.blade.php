@@ -22,7 +22,7 @@
                         </div>
 
                         <!-- Status Badge -->
-                        <div>
+                        <div class="mt-2 w-max">
                             @php
                             $statusClasses = [
                             'pending' => 'bg-yellow-100 text-yellow-800 border-yellow-200',
@@ -34,13 +34,13 @@
                             'cancelled' => 'bg-red-50 text-red-600 border-red-100',
                             ];
                             $statusLabel = [
-                            'pending' => 'Menunggu Pembayaran',
-                            'unpaid' => 'Belum Dibayar',
-                            'paid' => 'Sudah Dibayar',
-                            'processing' => 'Diproses',
-                            'shipped' => 'Dikirim',
-                            'completed' => 'Selesai',
-                            'cancelled' => 'Dibatalkan',
+                            'pending' => 'Pending',
+                            'unpaid' => 'Unpaid',
+                            'paid' => 'Paid',
+                            'processing' => 'Processing',
+                            'shipped' => 'Shipped',
+                            'completed' => 'Completed',
+                            'cancelled' => 'Cancelled',
                             ];
                             $currentStatus = strtolower($order->status);
                             $class = $statusClasses[$currentStatus] ?? 'bg-gray-100 text-gray-800 border-gray-200';
