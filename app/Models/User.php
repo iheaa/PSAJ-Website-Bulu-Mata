@@ -54,4 +54,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+
+    /**
+     * Check if the user is an admin.
+     *
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->email === 'admin@naritalashes.com';
+    }
 }

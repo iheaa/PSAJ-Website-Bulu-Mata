@@ -35,7 +35,7 @@ class AdminUserController extends Controller
         $user = User::findOrFail($id);
 
         // Simple safety: jangan hapus akun admin default
-        if ($user->email === 'admin@naritalashes.com') {
+        if ($user->isAdmin()) {
             return redirect()->back()->with('success', 'Akun admin utama tidak dapat dihapus.');
         }
 

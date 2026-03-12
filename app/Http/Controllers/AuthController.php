@@ -43,6 +43,10 @@ class AuthController extends Controller
 
         Auth::login($user);
 
+        if ($user->isAdmin()) {
+            return redirect('/admin/dashboard')->with('success', 'Admin account created successfully!');
+        }
+
         return redirect('/')->with('success', 'Account created successfully!');
     }
 
@@ -56,6 +60,10 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+
+            if (Auth::user()->isAdmin()) {
+                return redirect('/admin/dashboard')->with('success', 'Admin logged in successfully!');
+            }
 
             return redirect('/')->with('success', 'Logged in successfully!');
         }
@@ -103,6 +111,10 @@ class AuthController extends Controller
         }
 
         Auth::login($user, true);
+
+        if ($user->isAdmin()) {
+            return redirect('/admin/dashboard')->with('success', 'Admin logged in successfully!');
+        }
 
         return redirect('/')->with('success', 'Logged in successfully!');
     }
