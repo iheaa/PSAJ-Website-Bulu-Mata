@@ -56,14 +56,14 @@
 
                     <!-- Dropdown Menu -->
                     <div id="user-menu-dropdown"
-                        class="absolute right-0 mt-2 w-[160px] md:w-[155px] bg-white rounded-[20px] shadow-[0_4px_15px_rgb(0,0,0,0.08)] border border-slate-300 origin-top-right transition-all duration-300 transform opacity-0 translate-y-2 pointer-events-none z-[120] overflow-hidden">
+                        class="absolute right-0 mt-2 w-max min-w-[170px] bg-white rounded-[20px] shadow-[0_4px_15px_rgb(0,0,0,0.08)] border border-slate-300 origin-top-right transition-all duration-300 transform opacity-0 translate-y-2 pointer-events-none z-[120] overflow-hidden">
 
                         <!-- Arrow pointing up removed since not in design -->
 
-                        <div class="px-4 py-3 relative z-10 flex items-center justify-start gap-2 bg-white pl-[22px]">
+                        <div class="px-4 py-3 relative z-10 flex items-center justify-start gap-3 bg-white pl-[22px]">
                             <h1 class="text-sm font-extrabold text-[#D4AF37] leading-none">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</h1>
-                            <div class="flex-1 min-w-0">
-                                <p class="text-[13px] sm:text-sm font-bold text-slate-700 leading-tight truncate">{{ Auth::user()->name }}</p>
+                            <div class="flex-1 min-w-0 pr-4">
+                                <p class="text-[13px] sm:text-sm font-bold text-slate-700 leading-tight whitespace-nowrap">{{ Auth::user()->name }}</p>
                             </div>
                         </div>
 
@@ -90,7 +90,7 @@
                                             d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                     </svg>
                                 </div>
-                                <span class="text-[12px] sm:text-[13px] text-slate-600 font-medium group-hover:text-slate-800">Profil<br>Saya</span>
+                                <span class="text-[12px] sm:text-[13px] text-slate-600 font-medium group-hover:text-slate-800 whitespace-nowrap pr-4">Profil Saya</span>
                             </a>
                             <a href="{{ route('orders.index') }}"
                                 class="flex items-center px-4 py-2 hover:bg-slate-50 transition-colors group">
@@ -100,7 +100,7 @@
                                             d="M3 3h2l.4 2M7 13h10l3-8H6.4M7 13L5.4 5M7 13l-2 5m12-5l2 5M10 21a1 1 0 11-2 0 1 1 0 012 0zm8 0a1 1 0 11-2 0 1 1 0 012 0z" />
                                     </svg>
                                 </div>
-                                <span class="text-[12px] sm:text-[13px] text-slate-600 font-medium group-hover:text-slate-800 leading-tight">Lihat<br>Pesanan</span>
+                                <span class="text-[12px] sm:text-[13px] text-slate-600 font-medium group-hover:text-slate-800 leading-tight whitespace-nowrap pr-4">Lihat Pesanan</span>
                             </a>
                         </div>
 
@@ -117,7 +117,7 @@
                                                 d="M17 16l4-4m0 0l-4-4m4 4H9m4 4v1a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2h5a2 2 0 012 2v1" />
                                         </svg>
                                     </div>
-                                    <span class="text-[13px] sm:text-[14px] text-slate-700 font-bold group-hover:text-slate-900">Logout</span>
+                                    <span class="text-[13px] sm:text-[14px] text-slate-700 font-bold group-hover:text-slate-900 whitespace-nowrap ml-1 pr-4">Logout</span>
                                 </button>
                             </form>
                         </div>
@@ -197,10 +197,10 @@
                     @auth
                     <div class="flex items-center justify-center gap-4 mb-4">
                         <div
-                            class="h-10 w-10 bg-narita-gold/10 rounded-full flex items-center justify-center text-narita-gold font-bold">
+                            class="h-10 w-10 bg-narita-gold/10 rounded-full flex items-center justify-center text-narita-gold font-bold ml-2">
                             {{ substr(Auth::user()->name, 0, 1) }}
                         </div>
-                        <span class="text-lg font-bold text-gray-800">{{ Auth::user()->name }}</span>
+                        <span class="text-lg font-bold text-gray-800 ">{{ Auth::user()->name }}</span>
                     </div>
                     @if(Auth::user()->is_admin ?? false)
                     <a href="{{ route('admin.dashboard') }}"

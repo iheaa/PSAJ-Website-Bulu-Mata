@@ -21,7 +21,6 @@
             @foreach($catalogs as $catalog)
             <div class="flex flex-col items-center group">
                 <!-- Image -->
-                <!-- Image -->
                 <a href="{{ route('product.detail', $catalog->id) }}"
                     class="block w-full overflow-hidden rounded-lg mb-6 relative" style="aspect-ratio: 1/1;">
                     <img src="{{ asset($catalog->image) }}" alt="{{ $catalog->name }}"
