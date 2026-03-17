@@ -225,7 +225,6 @@
 
 /* --- Header Row (Desktop) --- */
 .cart-header-row {
-    display: flex;
     align-items: center;
     background-color: #f9fafb;
     padding: 1rem;

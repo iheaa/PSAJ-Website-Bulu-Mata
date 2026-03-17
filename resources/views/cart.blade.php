@@ -27,13 +27,15 @@
         <br>
 
         @if(count($cart) > 0)
-        <!-- Desktop Header -->
-        <div class="hidden md:flex cart-header-row shadow-sm border border-gray-200">
-            <div class="w-[5%] flex justify-center">
-                <input type="checkbox" class="custom-checkbox text-orange-600 focus:ring-orange-500"
+        <!-- Select All Header -->
+        <div class="flex cart-header-row shadow-sm border border-gray-200 mb-4 bg-white px-4 py-3 md:p-4 rounded-xl items-center">
+            <div class="flex-shrink-0 flex items-center pr-2 md:pr-4">
+                <input type="checkbox" class="custom-checkbox text-orange-600 focus:ring-orange-500 !w-5 !h-5"
                     id="select-all-desktop" onchange="toggleAll(this.checked)">
             </div>
-            <div class="w-[45%] pl-4 ml-4">Pilih Semua Produk</div>
+            <div class="flex-1 text-sm md:text-base font-medium text-gray-700 flex items-center ml-2">
+                <label for="select-all-desktop" class="cursor-pointer select-none">Pilih Semua Produk <span class="hidden sm:inline">({{ count($cart) }})</span></label>
+            </div>
         </div>
 
         <!-- Cart Items -->
@@ -161,43 +163,31 @@
         </div>
 
         <!-- Sticky Checkout Bar -->
-        <div class="checkout-bar">
-            <div class="container mx-auto max-w-6xl px-4 flex items-center justify-between">
+        <div class="checkout-bar !py-3 md:!py-4">
+            <div class="container mx-auto max-w-6xl px-4 flex items-center justify-between gap-4 w-full">
 
-                <!-- Left: Select All -->
-                <div class="flex items-center gap-3">
-                    <input type="checkbox" class="custom-checkbox text-orange-600 focus:ring-orange-500"
-                        id="select-all-mobile" onchange="toggleAll(this.checked)">
-                    <label for="select-all-mobile"
-                        class="text-sm font-medium text-gray-700 cursor-pointer select-none ml-4">
-                        Pilih Semua Produk <span class="hidden sm:inline">({{ count($cart) }})</span>
-                    </label>
-
-                </div>
-
-                <!-- Right: Total & Action -->
-                <div class="flex items-center gap-4 md:gap-8">
-                    <div class="text-right">
-                        <div class="flex flex-col md:flex-row md:items-center md:gap-2">
-                            <span class="text-lg md:text-2xl text-gray-500">Total Pembayaran : </span>
-                            <span class="text-lg md:text-2xl font-bold text-orange-600" id="grand-total-display">
-                                Rp {{ number_format($grandTotal, 0, ',', '.') }}
-                            </span>
-                        </div>
-                        <div class="text-[10px] md:text-xs text-green-600 mt-0.5 hidden md:block font-medium">
-                            Ongkir Di Tanggung Penjual
-                        </div>
+                <!-- Left: Total -->
+                <div class="flex-1 flex flex-col items-start justify-center min-w-0">
+                    <div class="flex flex-col md:flex-row md:items-center md:gap-2">
+                        <span class="text-xs md:text-lg text-gray-500 leading-tight">Total Pembayaran:</span>
+                        <span class="text-sm md:text-2xl font-bold text-orange-600 leading-tight truncate" id="grand-total-display">
+                            Rp {{ number_format($grandTotal, 0, ',', '.') }}
+                        </span>
                     </div>
-
-                    <a href="{{ route('checkout.details') }}" class="checkout-btn text-sm md:text-base">
-                        Checkout
-                    </a>
+                    <div class="text-[10px] md:text-xs text-green-600 mt-0.5 hidden md:block font-medium">
+                        Ongkir Di Tanggung Penjual
+                    </div>
                 </div>
+
+                <!-- Right: Action -->
+                <a href="{{ route('checkout.details') }}" class="checkout-btn shrink-0 text-sm md:text-base !px-6 md:!px-8 !h-[40px] md:!h-[48px] flex items-center justify-center">
+                    Checkout
+                </a>
             </div>
         </div>
 
         <!-- Spacer for sticky bar -->
-        <div class="h-6"></div>
+        <div class="h-10"></div>
 
         @else
         <!-- Empty State -->

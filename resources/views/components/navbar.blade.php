@@ -37,10 +37,7 @@
                     class="flex group items-center justify-center w-9 h-9 rounded-full hover:bg-white hover:shadow-sm transition-all duration-300 relative">
                     <img src="{{ asset('img/image 35.png') }}" alt="Cart"
                         class="w-5 h-5 object-contain opacity-60 group-hover:opacity-100 transition-opacity">
-                    <span id="cart-count"
-                        class="{{ (session('cart') && count(session('cart')) > 0) ? '' : 'hidden' }} absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
-                        {{ session('cart') ? array_sum(array_column(session('cart'), 'quantity')) : 0 }}
-                    </span>
+                  
                 </a>
             </div>
 
@@ -61,7 +58,7 @@
                         <!-- Arrow pointing up removed since not in design -->
 
                         <div class="px-4 py-3 relative z-10 flex items-center justify-start gap-3 bg-white pl-[22px]">
-                            <h1 class="text-sm font-extrabold text-[#D4AF37] leading-none">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</h1>
+                            
                             <div class="flex-1 min-w-0 pr-4">
                                 <p class="text-[13px] sm:text-sm font-bold text-slate-700 leading-tight whitespace-nowrap">{{ Auth::user()->name }}</p>
                             </div>
@@ -136,10 +133,7 @@
                     class="md:hidden ml-2 inline-flex items-center justify-center w-9 h-9 rounded-full hover:bg-gray-100 transition-colors relative">
                     <img src="{{ asset('img/image 35.png') }}" alt="Cart"
                         class="w-5 h-5 object-contain opacity-70">
-                    <span id="cart-count-mobile"
-                        class="{{ (session('cart') && count(session('cart')) > 0) ? '' : 'hidden' }} absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
-                        {{ session('cart') ? array_sum(array_column(session('cart'), 'quantity')) : 0 }}
-                    </span>
+                   
                 </a>
 
                 <!-- Mobile Menu Button -->
