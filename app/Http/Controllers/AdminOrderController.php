@@ -48,9 +48,12 @@ class AdminOrderController extends Controller
         return $pdf->download('invoice-' . $order->id . '.pdf');
     }
 
-    public function export()
+    public function export(Request $request)
     {
-        return Excel::download(new OrdersExport, 'orders-' . date('Y-m') . '.xlsx');
+        $month = (int) ($request->query('month', now()->month));
+        $year = (int) ($request->query('year', now()->year));
+
+        return Excel::download(new OrdersExport($month, $year), 'orders-' . $year . '-' . str_pad($month, 2, '0', STR_PAD_LEFT) . '.xlsx');
     }
 
     /**

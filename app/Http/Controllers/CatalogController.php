@@ -27,11 +27,15 @@ class CatalogController extends Controller
 
         // Total Items Sold (sum of quantities in order_items for paid orders)
         // We need to join with order_items
-        $totalItemsSold = \App\Models\OrderItem::whereHas('order', function ($q) {
-            $q->where('status', 'paid')
-                ->orWhere('status', 'processing')
-                ->orWhere('status', 'shipped')
-                ->orWhere('status', 'completed');
+        $totalItemsSold = \App\Models\OrderItem::whereHas('order', function ($q) use ($selectedMonth, $selectedYear) {
+            $q->where(function ($query) {
+                $query->where('status', 'paid')
+                    ->orWhere('status', 'processing')
+                    ->orWhere('status', 'shipped')
+                    ->orWhere('status', 'completed');
+            })
+            ->whereMonth('created_at', $selectedMonth)
+            ->whereYear('created_at', $selectedYear);
         })->sum('quantity');
 
         // Monthly Revenue (selected month)

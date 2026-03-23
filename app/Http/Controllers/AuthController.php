@@ -87,13 +87,13 @@ class AuthController extends Controller
     /** Redirect to Google OAuth */
     public function redirectToGoogle()
     {
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver('google')->stateless()->redirect();
     }
 
     /** Handle Google OAuth callback: create or update user, then login */
     public function handleGoogleCallback()
     {
-        $googleUser = Socialite::driver('google')->user();
+        $googleUser = Socialite::driver('google')->stateless()->user();
 
         $user = User::where('google_id', $googleUser->getId())->first();
 

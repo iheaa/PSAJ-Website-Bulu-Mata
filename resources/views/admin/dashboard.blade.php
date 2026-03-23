@@ -123,7 +123,7 @@
         </div>
         <div class="bg-gray-50 px-5 py-3">
             <div class="text-sm">
-                <a href="{{ route('admin.orders.export') }}"
+                <a href="{{ route('admin.orders.export', ['month' => $selectedMonth, 'year' => $selectedYear]) }}"
                     class="font-medium text-green-600 hover:text-green-500">Download Bulanan (.xlsx)</a>
             </div>
         </div>

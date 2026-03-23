@@ -65,9 +65,9 @@
                     <div class="mt-5 border-t border-gray-100"></div>
 
                     {{-- Mobile tabs --}}
-                    <div class="md:hidden mt-5 flex gap-2 overflow-x-auto pb-1">
-                        <button type="button" data-tab="akun" class="profile-tab profile-tab--mobile active whitespace-nowrap px-5 py-3 rounded-xl text-left text-sm font-semibold transition-all bg-white border border-gray-200 text-narita-gold shadow-sm">Akun Saya</button>
-                        <button type="button" data-tab="pesanan" class="profile-tab profile-tab--mobile whitespace-nowrap px-5 py-3 rounded-xl text-left text-sm font-semibold transition-all border border-gray-200 text-gray-600 hover:bg-white hover:shadow-sm">Pesanan Saya</button>
+                    <div class="md:hidden mt-5 flex w-full bg-gray-100 p-1 rounded-xl">
+                        <button type="button" data-tab="akun" class="profile-tab profile-tab--mobile active flex-1 py-2.5 px-4 rounded-lg text-center text-sm font-semibold transition-all bg-white text-narita-gold shadow-sm">Akun Saya</button>
+                        <button type="button" data-tab="pesanan" class="profile-tab profile-tab--mobile flex-1 py-2.5 px-4 rounded-lg text-center text-sm font-semibold transition-all text-gray-600">Pesanan Saya</button>
                     </div>
                 </div>
 
@@ -120,6 +120,7 @@
                         </form>
                     </div>
 
+                    @if(!$user->google_id)
                     {{-- Card: Security / Change Password --}}
                     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                         <div class="px-6 py-4 border-b border-gray-100 bg-gray-50/50">
@@ -164,6 +165,7 @@
                             </div>
                         </form>
                     </div>
+                    @endif
                 </section>
 
                 {{-- Section 2: Lihat Pesanan (Order History) --}}
@@ -245,7 +247,7 @@
                             </div>
                             <br>
                             <h3 class="text-lg font-bold text-gray-900 mb-2">Belum Ada Pesanan</h3>
-                            <p class="text-gray-500 text-sm max-w-sm mx-auto mb-6">Anda belum memiliki riwayat pembelian. Mulai temukan produk bulu mata favorit Anda.</p>1
+                            <p class="text-gray-500 text-sm max-w-sm mx-auto mb-6">Anda belum memiliki riwayat pembelian. Mulai temukan produk bulu mata favorit Anda.</p>
                           <a href="{{ route('catalog.index') }}" 
                                 class="inline-flex items-center justify-center px-8 py-3 mx-4 rounded-xl font-bold text-sm bg-transparent border-2 border-narita-gold  hover:bg-narita-gold hover:text-narita-gold shadow-sm hover:shadow-md transition-all">
                                 Belanja Sekarang

@@ -9,6 +9,15 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 
 class OrdersExport implements FromCollection, WithHeadings, WithMapping
 {
+    protected $month;
+    protected $year;
+
+    public function __construct($month = null, $year = null)
+    {
+        $this->month = $month ?? now()->month;
+        $this->year = $year ?? now()->year;
+    }
+
     /**
      * @return \Illuminate\Support\Collection
      */
@@ -16,8 +25,8 @@ class OrdersExport implements FromCollection, WithHeadings, WithMapping
     {
         // Export current month's orders
         return Order::with('items')
-            ->whereMonth('created_at', now()->month)
-            ->whereYear('created_at', now()->year)
+            ->whereMonth('created_at', $this->month)
+            ->whereYear('created_at', $this->year)
             ->get();
     }
 
