@@ -201,6 +201,8 @@
                     btn.classList.add('bg-green-600', 'hover:bg-green-700');
                     btn.classList.remove('bg-narita-gold', 'hover:bg-[#c29d2b]');
 
+                    window.dispatchEvent(new CustomEvent('notify', { detail: 'Barang berhasil ditambahkan ke keranjang!' }));
+
                     // Update global cart badge
                     const badge = document.querySelector('.cart-badge');
                     if (badge && data.cartCount) {

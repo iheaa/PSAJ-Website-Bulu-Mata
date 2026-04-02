@@ -12,7 +12,8 @@
 
             <!-- Desktop Menu (Centered Extended Pill) -->
             <div
-                class="hidden md:flex transform -translate-x-1/2 items-center space-x-1 lg:space-x-2 bg-gray-50/80 px-4 py-2 rounded-full border border-gray-100 shadow-sm z-[110]">
+                class="hidden md:flex items-center space-x-1 lg:space-x-2 bg-gray-50/80 px-4 py-2 rounded-full border border-gray-100 shadow-sm z-[110]"
+                style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
 
                 <!-- Counterweight for Balance (Invisible) - Ensures Links are perfectly centered -->
                 <div class="flex items-center justify-center w-9 h-9 invisible" aria-hidden="true"></div>

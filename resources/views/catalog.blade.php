@@ -5,7 +5,7 @@
 @section('content')
 <div class="bg-white py-12">
     <!-- Header -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16" data-aos="fade-up">
         <span class="text-xs font-bold tracking-[0.2em] text-gray-400 uppercase">KATALOG</span>
         <h1 class="font-serif text-4xl lg:text-5xl text-gray-900 mt-2 mb-4">Narita Lashes</h1>
         <p class="text-gray-500 text-sm max-w-xl mx-auto leading-relaxed">
@@ -19,7 +19,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-16">
             @foreach($catalogs as $catalog)
-            <div class="flex flex-col items-center group">
+            <div class="flex flex-col items-center group" data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}">
                 <!-- Image -->
                 <a href="{{ route('product.detail', $catalog->id) }}"
                     class="block w-full overflow-hidden rounded-lg mb-6 relative" style="aspect-ratio: 1/1;">
@@ -87,6 +87,8 @@
                     btn.innerHTML = `<span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Added!</span>`;
                     btn.classList.add('bg-green-100', 'text-green-800');
                     btn.classList.remove('bg-[#F7E7CE]');
+
+                    window.dispatchEvent(new CustomEvent('notify', { detail: 'Katalog berhasil ditambahkan ke keranjang!' }));
 
                     // Update global cart badge
                     const badge = document.querySelector('.cart-badge');

@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sign In - Narita Lashes</title>
+    <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -115,7 +116,7 @@
                 </div>
 
                 <div class="text-sm">
-                    <a href="#" class="font-medium text-[#D4AF37] hover:text-[#c29d2b] transition-colors">
+                    <a href="{{ route('password.request') }}" class="font-medium text-[#D4AF37] hover:text-[#c29d2b] transition-colors">
                         Forgot password?
                     </a>
                 </div>

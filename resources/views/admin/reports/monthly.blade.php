@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Laporan Penjualan {{ $monthName }}</title>
+    <link rel="icon" href="{{ asset('img/logo.png') }}" type="image/png">
     <style>
         * {
             box-sizing: border-box;

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="bg-slate-50 py-16 px-4 lg:py-24">
-    <div class="max-w-4xl mx-auto flex flex-col items-center">
+    <div class="max-w-4xl mx-auto flex flex-col items-center" data-aos="fade-up">
         
         <!-- Header Image -->
         <div class="w-full">
@@ -49,7 +49,7 @@
 <!-- Pilihan Style Section -->
 <div class="bg-white py-16 px-4 lg:py-24">
     <!-- Using flex-col-reverse for mobile stack order, md:flex-row to stay side-by-side on desktop -->
-    <div class="max-w-4xl mx-auto flex flex-col-reverse md:flex-row gap-8 md:gap-12 items-start">
+    <div class="max-w-4xl mx-auto flex flex-col-reverse md:flex-row gap-8 md:gap-12 items-start" data-aos="fade-up">
         
         <!-- Left Column (Text List) -->
         <div class="w-full md:w-[55%] space-y-6">

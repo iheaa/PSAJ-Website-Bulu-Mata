@@ -21,6 +21,7 @@ Route::get('/tentang', function () {
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\ForgotPasswordController;
 
 Route::get('/signin', [AuthController::class , 'showSignIn'])->name('signin');
 Route::post('/signin', [AuthController::class , 'login'])->name('login'); // Alias login for auth middleware
@@ -29,6 +30,16 @@ Route::post('/signup', [AuthController::class , 'store']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/auth/google', [AuthController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('/auth/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('auth.google.callback');
+
+// Password Reset Routes
+Route::middleware('guest')->group(function () {
+    Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetCodeEmail'])->name('password.email');
+    Route::get('/verify-code', [ForgotPasswordController::class, 'showVerifyCodeForm'])->name('password.verify.form');
+    Route::post('/verify-code', [ForgotPasswordController::class, 'verifyCode'])->name('password.verify');
+    Route::get('/reset-password', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('password.reset.form');
+    Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('password.update');
+});
 
 // Added Profile Routes
 Route::middleware('auth')->group(function () {

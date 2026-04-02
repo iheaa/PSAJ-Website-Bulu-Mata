@@ -65,9 +65,9 @@
                     <div class="mt-5 border-t border-gray-100"></div>
 
                     {{-- Mobile tabs --}}
-                    <div class="md:hidden mt-5 flex w-full bg-gray-100 p-1 rounded-xl">
-                        <button type="button" data-tab="akun" class="profile-tab profile-tab--mobile active flex-1 py-2.5 px-4 rounded-lg text-center text-sm font-semibold transition-all bg-white text-narita-gold shadow-sm">Akun Saya</button>
-                        <button type="button" data-tab="pesanan" class="profile-tab profile-tab--mobile flex-1 py-2.5 px-4 rounded-lg text-center text-sm font-semibold transition-all text-gray-600">Pesanan Saya</button>
+                    <div class="md:hidden mt-5 inline-flex w-max max-w-full bg-gray-100 p-1.5 rounded-xl overflow-x-auto gap-1">
+                        <button type="button" data-tab="akun" class="profile-tab profile-tab--mobile active py-2.5 px-6 rounded-lg text-center text-sm font-semibold transition-all bg-white text-narita-gold shadow-sm whitespace-nowrap">Akun Saya</button>
+                        <button type="button" data-tab="pesanan" class="profile-tab profile-tab--mobile py-2.5 px-6 rounded-lg text-center text-sm font-semibold transition-all text-gray-600 whitespace-nowrap">Pesanan Saya</button>
                     </div>
                 </div>
 
